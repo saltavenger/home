@@ -1,0 +1,80 @@
+.ribbon {
+    font-size: 20pt;
+    width: 30%;
+    position: relative;
+    background: var(--ui-primary);
+    color: var(--bg);
+    text-align: center;
+    margin-top: 3rem;
+    &:after{
+        content: "";
+        position: absolute;
+        display: block;
+        bottom: -0.5rem;
+        border: 1.5rem solid #35341C;
+        z-index: -1;
+        right: -2rem;
+        border-left-width: 1.5rem;
+        border-right-color: transparent;
+    }
+    h1{
+        font-size: 20pt;
+        padding: 0.8rem 0 0.8rem 0;
+        margin: 0;
+    }
+}
+
+.ribbonContent {
+    position: initial;
+    &:after{
+        content: "";
+        position: absolute;
+        display: block;
+        border-style: solid;
+        border-color: #212010 transparent transparent transparent;
+        bottom: -0.5rem;
+        right: 0.5rem;
+        border-width: 0.5rem 0.5rem 0 0;
+    }
+}
+
+.social{
+    font-size: 18pt;
+    text-align: center;
+    a + a {
+        margin-left: 1rem;
+    }
+}
+
+.content {
+    display: grid;
+    grid-template-columns: 1fr;
+    margin-bottom: 2rem;
+    @media screen and (min-width: 64rem) {
+        grid-template-columns: minMax(min-content, 32%) 1fr;
+    }
+}
+
+.side {
+    padding: 0 3rem 0 1.3rem;
+    border-right: 0;
+    border-bottom: 2px dashed var(--ui-primary);
+    border-color: rgba(68, 68, 34, 0.8);
+    margin: 3rem 0 0 0;
+    @media screen and (min-width: 64rem) {
+        border-right: 2px dashed var(--ui-primary);
+        border-bottom: 0;
+    }
+}
+
+.main {
+    padding-top: 1.3rem;
+    padding-left: 1.3rem;
+}
+
+.education{
+    list-style-type: none;
+    h3 {
+        margin: 0.2rem 0 0.2rem 0;
+    }
+}

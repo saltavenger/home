@@ -1,0 +1,38 @@
+:root {
+    --bg: #F3F3E2;
+    --ui-primary: #444422;
+    --link-primary: #DD6514;
+    --link-secondary: #F48C8C;
+    --text-primary: #333;
+}
+
+body {
+    background: var(--bg);
+    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+    color: var(--text-primary);
+    margin: 0;
+    padding: 0;
+    font-family: 'Averia Serif Libre', serif;
+}
+
+
+a {
+    color: var(--link-primary);
+    &:hover, &:focus{
+        color: var(--link-secondary);
+    }
+}
+
+p{
+    margin: 1rem 0 1rem 0;
+}
+
+.sr-only {
+    clip: rect(0 0 0 0);
+    clip-path: inset(50%);
+    height: 1px;
+    overflow: hidden;
+    position: absolute;
+    white-space: nowrap;
+    width: 1px;
+}
