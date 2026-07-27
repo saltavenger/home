@@ -52,7 +52,8 @@ jobs:
       url: ${{ steps.deployment.outputs.page_url }}
     runs-on: ubuntu-latest
     permissions:
-      deployments: write # Grants the GITHUB_TOKEN permission to manage deployments
+      deployments: write
+      id-token: write # Grants the GITHUB_TOKEN permission to manage deployments
       contents: read     # Required to checkout the repository code
     needs: build
     steps:
