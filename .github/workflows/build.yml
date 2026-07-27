@@ -51,6 +51,9 @@ jobs:
       name: github-pages
       url: ${{ steps.deployment.outputs.page_url }}
     runs-on: ubuntu-latest
+    permissions:
+      deployments: write # Grants the GITHUB_TOKEN permission to manage deployments
+      contents: read     # Required to checkout the repository code
     needs: build
     steps:
       - name: Deploy to GitHub Pages
