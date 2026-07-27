@@ -25,6 +25,13 @@ jobs:
       # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
       - uses: actions/checkout@v4
 
+      # Step 2: Set up the specific Node.js version and enable npm caching
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '24' # Specify your preferred major version (e.g., 18, 20, 22)
+          cache: 'npm'       # Automatically caches your node_modules
+
       # Runs a single command using the runners shell
       - name: Run install
         run: npm install
