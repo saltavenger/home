@@ -23,11 +23,11 @@ jobs:
     # Steps represent a sequence of tasks that will be executed as part of the job
     steps:
       # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v7
 
       # Step 2: Set up the specific Node.js version and enable npm caching
       - name: Set up Node.js
-        uses: actions/setup-node@v4
+        uses: actions/setup-node@v7
         with:
           node-version: '24' # Specify your preferred major version (e.g., 18, 20, 22)
           cache: 'npm'       # Automatically caches your node_modules
