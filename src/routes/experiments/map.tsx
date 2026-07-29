@@ -13,7 +13,7 @@ function Map() {
     useEffect(() => {
         if (mapContainerRef.current !== null) {
             mapRef.current = new mapboxgl.Map({
-                accessToken: 'pk.eyJ1IjoiYWFyZXNrb2ciLCJhIjoiUE9xRko2VSJ9.JrYWM5Ru2ocTP5zafKmdKw',
+                accessToken: import.meta.env.VITE_MAPBOX_TOKEN,
                 container: mapContainerRef.current,
                 center: [-71.06776, 42.35816], // starting position [lng, lat]. Note that lat must be set between -90 and 90
                 zoom: 9 // starting zoom

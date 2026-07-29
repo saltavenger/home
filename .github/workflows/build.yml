@@ -19,6 +19,7 @@ jobs:
   build:
     # The type of runner that the job will run on
     runs-on: ubuntu-latest
+    environment: production
 
     # Steps represent a sequence of tasks that will be executed as part of the job
     steps:
@@ -38,6 +39,8 @@ jobs:
 
       - name: Run build
         run: npm run build
+        env:
+          VITE_MAPBOX_TOKEN: ${{ vars.VITE_MAPBOX_TOKEN }}
 
       - name: Upload static files as artifact
         id: deployment
