@@ -29,6 +29,7 @@ function App() {
             <h2>Experiments</h2>
             <ul>
               <li><Link to="/experiments/map">Tri.net Map 2026</Link></li>
+              <li><a href="https://x.com/search?q=(feedandgo%2C%20OR%20rasberrypi)%20(from%3Asaltavenger)&src=typed_query&f=top" target="_blank">Raspberry Pi Cat Feeder & Companion App, 2019</a></li>
             </ul>
             <h2>Achievements</h2>
             <ul>
