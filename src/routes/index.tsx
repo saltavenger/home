@@ -5,9 +5,11 @@ import {
   faStackOverflow
 } from '@fortawesome/free-brands-svg-icons';
 import { faCertificate } from '@fortawesome/free-solid-svg-icons';
-import data from './assets/experience.json';
+import { createFileRoute, Link } from '@tanstack/react-router';
 
-import styles from './app.module.css';
+import data from '../assets/experience.json';
+
+import styles from './index.module.css';
 
 function App() {
   const experience = data.experience;
@@ -24,6 +26,10 @@ function App() {
                 <a href="http://stackoverflow.com/users/2823860/saltavenger"><FontAwesomeIcon icon={faLinkedin} /><span className="sr-only">LinkedIn</span></a>
                 <a href="https://www.linkedin.com/in/aareskog"><FontAwesomeIcon icon={faStackOverflow} /><span className="sr-only">Stack Overflow</span></a>
             </div>
+            <h2>Experiments</h2>
+            <ul>
+              <li><Link to="/experiments/map">Tri.net Map 2026</Link></li>
+            </ul>
             <h2>Achievements</h2>
             <ul>
               <li><strong>1st Place</strong> — Chewy — Technology peer recognition team award, 2021</li>
@@ -39,7 +45,7 @@ function App() {
                 <li key={job.id}>{job.date} <strong>{job.title}</strong>, {job.company}
                   <ul>
                     {job.highlights.map(highlight => (
-                      <li>{highlight}</li>
+                      <li key={highlight.key}>{highlight.text}</li>
                     ))}
                   </ul>
                 </li>
@@ -63,4 +69,6 @@ function App() {
   )
 }
 
-export default App
+export const Route = createFileRoute('/')({
+  component: App,
+});

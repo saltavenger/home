@@ -6,9 +6,12 @@
     --text-primary: #333;
 }
 
+html { font-size: 62.5%; } /* 1rem = 10px */
+
 body {
     background: var(--bg);
     font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+    font-size: 1.4rem;
     color: var(--text-primary);
     margin: 0;
     padding: 0;
@@ -23,7 +26,7 @@ a {
     }
 }
 
-p{
+p {
     margin: 1rem 0 1rem 0;
 }
 

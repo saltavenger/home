@@ -6,12 +6,12 @@
             "title": "Senior Software Engineer III",
             "company": "Chewy",
             "highlights": [
-                "Led greenfield project delivering custom task flows for clinic-facing customer support specialists",
-                "Founded enterprise design system, contributed ~15 initial components",
-                "Standardized CI/CD pipelines for frontend pharmacy teams cutting build/deploy times 50%.",
-                "Self-hosted NextJS environments in EKS using terraform, docker",
-                "Set up observability tooling including real-time monitoring, tracing, alerting, and session replay",
-                "Led migration and consolidation effort for microfrontends in Chewy's most actively developed repo, supporting 30+ engineers across six teams."
+                {"key": "chewy-senior-0", "text": "Led greenfield project delivering custom task flows for clinic-facing customer support specialists"},
+                {"key": "chewy-senior-1", "text": "Founded enterprise design system, contributed ~15 initial components"},
+                {"key": "chewy-senior-2", "text": "Standardized CI/CD pipelines for frontend pharmacy teams cutting build/deploy times 50%."},
+                {"key": "chewy-senior-3", "text": "Self-hosted NextJS environments in EKS using terraform, docker"},
+                {"key": "chewy-senior-4", "text": "Set up observability tooling including real-time monitoring, tracing, alerting, and session replay"},
+                {"key": "chewy-senior-5", "text": "Led migration and consolidation effort for microfrontends in Chewy's most actively developed repo, supporting 30+ engineers across six teams."}   
             ]
         },
         {
@@ -20,10 +20,10 @@
             "title": "Senior Software Engineer II",
             "company": "Chewy",
             "highlights": [
-                "Led migration of legacy application from Vue to React and splitting application into microfrontends",
-                "Led migration of backend application from ECS to EKS as well as migrating our database to RDS",
-                "Set up CICD pipelines for failover and recovery for both frontend and backend applications",
-                "Led responsive UX overhaul of application to support mobile devices, allowing for elimination of low-adoption native mobile apps"
+                {"key": "chewy-0", "text": "Led migration of legacy application from Vue to React and splitting application into microfrontends"},
+                {"key": "chewy-1", "text": "Led migration of backend application from ECS to EKS as well as migrating our database to RDS"},
+                {"key": "chewy-2", "text": "Set up CICD pipelines for failover and recovery for both frontend and backend applications"},
+                {"key": "chewy-3", "text": "Led responsive UX overhaul of application to support mobile devices, allowing for elimination of low-adoption native mobile apps"}
             ]
         },
         {
@@ -32,11 +32,11 @@
             "title": "Senior Frontend Engineer",
             "company": "Buildium",
             "highlights": [
-                "Full-stack development for esignatures vendor integration, doubled monthly new users and increased billable usage by 33% over prior integration within first two months",
-                "Full-stack development for renters insurance product launch, outperforming total policy sales of the previous vendor integration within the first six months.",
-                "Machine learning model with Jupyter and Python to detect fraudulent rental listings.",
-                "Served on design review board, reviewing proposals for new components for standards and compliance",
-                "Architecture planning for company-wide migration from AngularJS to Angular"
+                {"key": "buildium-senior-0", "text": "Full-stack development for esignatures vendor integration, doubled monthly new users and increased billable usage by 33% over prior integration within first two months"},
+                {"key": "buildium-senior-1", "text": "Full-stack development for renters insurance product launch, outperforming total policy sales of the previous vendor integration within the first six months."},
+                {"key": "buildium-senior-2", "text": "Machine learning model with Jupyter and Python to detect fraudulent rental listings."},
+                {"key": "buildium-senior-3", "text": "Served on design review board, reviewing proposals for new components for standards and compliance"},
+                {"key": "buildium-senior-4", "text": "Architecture planning for company-wide migration from AngularJS to Angular"}
             ]
         },
         {
@@ -45,9 +45,9 @@
             "title": "Frontend Engineer",
             "company": "Buildium",
             "highlights": [
-                "Fullstack development for the leasing flow and late fees redesign, including associated bug fixes and unit testing",
-                "Led department-wide front-end guild",
-                "Created guidelines for cross-department design review board to introduce design system used company-wide"
+                {"key": "buildium-0", "text": "Fullstack development for the leasing flow and late fees redesign, including associated bug fixes and unit testing"},
+                {"key": "buildium-1", "text": "Led department-wide front-end guild"},
+                {"key": "buildium-2", "text": "Created guidelines for cross-department design review board to introduce design system used company-wide"}
             ]
         },
         {
@@ -56,10 +56,10 @@
             "title": "Frontend Engineer",
             "company": "NGPVAN",
             "highlights": [
-                "Maintain and contribute to design system",
-                "Update UI across all applications in NGPVAN ecosystem",
-                "Documentation and project support for backend teams",
-                "Accessibility auditing & leading accessibility workshops"
+                {"key": "ngpvan-0", "text": "Maintain and contribute to design system"},
+                {"key": "ngpvan-1", "text": "Update UI across all applications in NGPVAN ecosystem"},
+                {"key": "ngpvan-2", "text": "Documentation and project support for backend teams"},
+                {"key": "ngpvan-3", "text": "Accessibility auditing & leading accessibility workshops"}
             ]
         },
         {
@@ -68,8 +68,8 @@
             "title": "Associate Programmer Analyst",
             "company": "Abt Associates",
             "highlights": [
-                "Frontend development, UX design, for various clients including EPA, Mass EEA, National institutes of health. All development was either WCAG or 508 compliant, verified by independent audits, determined on a per-project basis to meet legal standards for government applications.",
-                "Collaborate with research & data scientists to implement data and GIS visualizations for web"
+                {"key": "abt-0", "text": "Frontend development, UX design, for various clients including EPA, Mass EEA, National institutes of health. All development was either WCAG or 508 compliant, verified by independent audits, determined on a per-project basis to meet legal standards for government applications."},
+                {"key": "abt-1", "text": "Collaborate with research & data scientists to implement data and GIS visualizations for web"}
             ]
         }
     ]

@@ -1,0 +1,8 @@
+.mapNav {
+    margin: 1rem 5rem;
+}
+
+.map {
+    height: calc(100svh - 5.6rem);
+    margin: 1rem 5rem 2rem 5rem;
+}
