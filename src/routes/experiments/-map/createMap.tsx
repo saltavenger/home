@@ -8,7 +8,14 @@ import MarkerSelectedSVG from '../../../assets/location-dot-selected.svg';
 
 const MAPBOX_TOKEN = import.meta.env.VITE_MAPBOX_TOKEN;
 
-export function useCreateMap(onPopupChange: (container: HTMLElement, properties?: Record<string, any>) => void) {
+export interface PopupChangeParams {
+    popup: mapboxgl.Popup;
+    closeEvent: () => void;
+    popupContainer: HTMLElement;
+    facilityData: Record<string, any>;
+}
+
+export function useCreateMap(onPopupChange: (params: PopupChangeParams) => void) {
     const selectedFeatureId = useRef<string | undefined>(undefined);
 
     const popupHandler = ({ feature, target }: mapboxgl.InteractionEvent) => {
@@ -29,20 +36,28 @@ export function useCreateMap(onPopupChange: (container: HTMLElement, properties?
 
         const popupContainer = document.createElement('div');
         const facilityData = { ...feature?.properties, LATITUDE: coordinates?.[1], LONGITUDE: coordinates?.[0] };
-        onPopupChange(popupContainer, facilityData);
         
         const popup = new mapboxgl.Popup({ anchor: 'top', maxWidth: 'none' })
             .setLngLat(coordinates)
             .setDOMContent(popupContainer)
             .addTo(target);
 
-        popup.on('close', () => {
+        const closeEvent = () => {
             selectedFeatureId.current = undefined;
             target.setLayoutProperty(
                 'facilities-layer',
                 'icon-image',
                 'triMarker'
             );
+        };
+
+        popup.on('close', closeEvent);
+
+        onPopupChange({
+            popup,
+            closeEvent,
+            popupContainer,
+            facilityData,
         });
     };
 

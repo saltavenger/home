@@ -1,10 +1,10 @@
 import { createFileRoute, Link } from '@tanstack/react-router'
 import { useRef, useEffect, useState } from 'react';
 import { createPortal } from 'react-dom';
-import { useCreateMap } from './-map/createMap';
-import type { Map } from 'mapbox-gl/esm';
+import { useCreateMap, type PopupChangeParams } from './-map/createMap';
+import type { Map, Popup } from 'mapbox-gl/esm';
 
-import { Popup } from './-map/popUp';
+import { Popup as TRIPopup } from './-map/popUp';
 import type { Facility } from './-map/types';
 
 import styles from './map.module.css';
@@ -14,7 +14,9 @@ import '@mapbox/mapbox-gl-geocoder/dist/mapbox-gl-geocoder.css';
 function MapPage() {
     const mapRef = useRef<Map | null>(null);
     const mapContainerRef = useRef<HTMLDivElement>(null);
-    const [popupElement, setPopupElement] = useState<HTMLElement | undefined>();
+    const popupRef = useRef<Popup | null>(null);
+    const popupEventRef = useRef<(() => void) | undefined>(undefined);
+    const [popupContainer, setPopupContainer] = useState<HTMLElement | undefined>();
     const [popupData, setPopupData] = useState<Facility>({
         TRIFD: '',
         FACILITY_NAME: '',
@@ -26,20 +28,20 @@ function MapPage() {
         LONGITUDE: 0,
     });
 
-    const onPopupChange = (container: HTMLElement, properties?: Record<string, any>) => {
-        setPopupElement(container);
-        setPopupData(() => {
-            return {
-                TRIFD: properties?.TRIFD,
-                FACILITY_NAME: properties?.FACILITY_NAME,
-                STREET: properties?.STREET,
-                CITY: properties?.CITY,
-                STATE: properties?.STATE,
-                ZIP: properties?.ZIP,
-                LATITUDE: properties?.LATITUDE,
-                LONGITUDE: properties?.LONGITUDE,
-            };
-        });
+    const onPopupChange = ({ popup, closeEvent, popupContainer, facilityData }: PopupChangeParams) => {
+        popupRef.current = popup;
+        popupEventRef.current = closeEvent;
+        setPopupContainer(popupContainer);
+        setPopupData(() => ({
+            TRIFD: facilityData?.TRIFD,
+            FACILITY_NAME: facilityData?.FACILITY_NAME,
+            STREET: facilityData?.STREET,
+            CITY: facilityData?.CITY,
+            STATE: facilityData?.STATE,
+            ZIP: facilityData?.ZIP,
+            LATITUDE: facilityData?.LATITUDE,
+            LONGITUDE: facilityData?.LONGITUDE,
+        }));
     }
 
     const { createMap } = useCreateMap(onPopupChange);
@@ -50,6 +52,10 @@ function MapPage() {
         }
 
         return () => {
+            if (popupEventRef.current) {
+                // need to remove event before removing map
+                popupRef.current?.off('close', popupEventRef.current);
+            }
             mapRef.current?.remove()
         }
     }, []);
@@ -60,7 +66,7 @@ function MapPage() {
             <main>
                 <div id="map-container" ref={mapContainerRef} className={styles.map} />
             </main>
-            {!!popupElement && createPortal(<Popup facilityData={popupData} />, popupElement)}
+            {!!popupContainer && createPortal(<TRIPopup facilityData={popupData} />, popupContainer)}
         </>
     );
 }
