@@ -53,7 +53,8 @@ function MapPage() {
 
         return () => {
             if (popupEventRef.current) {
-                // need to remove event before removing map
+                // NOTE need to remove event before removing map due to map marker layout changes
+                // could convert layer to deck.gl rendering I believe to solve fill/stroke issue for highlighting
                 popupRef.current?.off('close', popupEventRef.current);
             }
             mapRef.current?.remove()
