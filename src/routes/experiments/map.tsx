@@ -88,10 +88,13 @@ function MapPage() {
 
     return (
         <>
-            <header className={styles.mapSection}><Link to="/">Home</Link></header>
-            <p className={styles.mapSection}>Toxic Release Inventory Facility Map. Displays TRI facilities with data from 2024 TRI reports, features highlight environmental justice demographic data for areas surrounding each facility.</p>
-            <p className={styles.mapSection}>EJScreen tools were removed from the EPA's website in 2025 and are being hosted by independent organizations.</p>
-            <p className={styles.mapSection}><a href="https://eelp.law.harvard.edu/tracker/epa-added-environmental-health-indicators-to-ejscreen/" target="_blank" rel="noopener noreferrer">Learn more about Environmental Health Indicators in EJScreen</a></p>
+            <div className={styles.mapSection}>
+                <header><Link to="/">Home</Link></header>
+                <p>Toxic Release Inventory Facility Map. Displays TRI facilities with data from 2024 TRI reports, features highlight environmental justice demographic data for areas surrounding each facility.</p>
+                <p>EJScreen tools were removed from the EPA's website in 2025 and are being hosted by independent organizations.</p>
+                <p><a href="https://eelp.law.harvard.edu/tracker/epa-added-environmental-health-indicators-to-ejscreen/" target="_blank" rel="noopener noreferrer">Learn more about Environmental Health Indicators in EJScreen</a></p>
+                <p><a href="https://github.com/saltavenger/home/tree/main/src/routes/experiments" target="_blank">Github repository</a> - Mapbox, D3, Motion</p>
+            </div>
             <main>
                 <div id="map-container" ref={mapContainerRef} className={styles.map} />
             </main>
