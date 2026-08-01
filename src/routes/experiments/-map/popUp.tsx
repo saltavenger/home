@@ -42,7 +42,7 @@ export function Popup({ facilityData, onBufferEvent }: PopupProps) {
     }, [LONGITUDE, LATITUDE, setEJS1MileData, setEJS3MileData]);
 
     const createBuffer = useCallback((buffer: number) => {
-        return circle([LONGITUDE, LATITUDE], buffer, { units: 'miles'});
+        return circle([LONGITUDE, LATITUDE], buffer, { units: 'miles', steps: 100 });
     }, [LONGITUDE, LATITUDE]);
 
     const showEJPie = useCallback(async (buffer: number, dataType: EJSDataType) => {
