@@ -5,3 +5,46 @@
 .popupSection {
     margin-top: 1rem;
 }
+
+.popupLabel {
+    font-size: 1.4rem;
+    margin-right: 1rem;
+    vertical-align: middle;
+}
+
+.popupActions {
+    margin-top: 1rem;
+    text-align: center;
+}
+
+.popupButton {
+    background-color: var(--link-primary);
+    color: contrast-color(var(--link-primary));
+    border: 1px solid hsl(from var(--link-primary) h s calc(l - 5));
+    padding: 0.5rem 1rem;
+    border-radius: 4px;
+    cursor: pointer;
+
+    &:hover, &:focus {
+        background-color: var(--link-secondary);
+    }
+
+    &:active {
+        background-color: hsl(from var(--link-secondary) h s calc(l - 5));
+    }
+
+    &:disabled {
+        background-color: #ccc;
+        border-color: #aaa;
+        cursor: not-allowed;
+        color: #555;
+    }
+
+    + .popupButton {
+        margin-left: 0.5rem;
+    }
+}
+
+.facilityName {
+    font-size: 1.5rem;
+}

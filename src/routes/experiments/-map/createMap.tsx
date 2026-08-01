@@ -37,7 +37,7 @@ export function useCreateMap(onPopupChange: (params: PopupChangeParams) => void)
         const popupContainer = document.createElement('div');
         const facilityData = { ...feature?.properties, LATITUDE: coordinates?.[1], LONGITUDE: coordinates?.[0] };
         
-        const popup = new mapboxgl.Popup({ anchor: 'top', maxWidth: 'none' })
+        const popup = new mapboxgl.Popup({ anchor: 'top', maxWidth: 'none', offset: 15 })
             .setLngLat(coordinates)
             .setDOMContent(popupContainer)
             .addTo(target);

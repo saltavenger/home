@@ -1,4 +1,4 @@
-interface Facility {
+export interface Facility {
     TRIFD: string;
     FACILITY_NAME: string;
     STREET: string;
@@ -9,4 +9,8 @@ interface Facility {
     LONGITUDE: number;
 }
 
-export type { Facility };
+export enum EJSDataType {
+    PCTMIN = 'pctmin',
+    PCTLOWINC = 'pctlowinc',
+    PCTHISP = 'pcthisp'
+}

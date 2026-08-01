@@ -1,3 +1,12 @@
 .pieContainer {
     text-align: center;
 }
+
+.pieLegend {
+    background-color: #7041df;
+    width: 1.2rem;
+    height: 1.2rem;
+    display: inline-block;
+    margin-right: 0.5rem;
+    vertical-align: middle;
+}

@@ -1,5 +1,5 @@
 import { useState, useCallback } from 'react';
-import type { Facility } from './types';
+import { type Facility, EJSDataType } from './enums';
 import { getEJSData } from './-services/fetch';
 import { Pie } from './pie';
 
@@ -22,6 +22,8 @@ export function Popup({ facilityData }: PopupProps) {
     const [EJS1MileData, setEJS1MileData] = useState<EJSGeoData>();
     const [EJS3MileData, setEJS3MileData] = useState<EJSGeoData>();
     const [pieData, setPieData] = useState<number[] | undefined>(undefined);
+    const [pieDataType, setPieDataType] = useState<EJSDataType | undefined>(undefined);
+    const [loading, setLoading] = useState<boolean>(false);
 
     const fetchEJSData = useCallback(async (buffer: number) => {
         if (buffer === 1) {
@@ -34,18 +36,24 @@ export function Popup({ facilityData }: PopupProps) {
             return data;
         }
     }, [setEJS1MileData, setEJS3MileData]);
-    const showEJPie = useCallback(async (buffer: number, dataType: 'pctmin' | 'pctlowinc' | 'pcthisp') => {
+
+    const showEJPie = useCallback(async (buffer: number, dataType: EJSDataType) => {
+        setLoading(true);
         setPieData(undefined);
         if (buffer === 1) {
             setShow3MilePie(false);
             setShow1MilePie(true);
             const data = EJS1MileData ?? await fetchEJSData(buffer);
+            setLoading(false);
             setPieData([data[dataType], 1 - data[dataType]]);
+            setPieDataType(dataType)
         } else {
             setShow1MilePie(false);
             setShow3MilePie(true);
             const data = EJS3MileData ?? await fetchEJSData(buffer);
+            setLoading(false);
             setPieData([data[dataType], 1 - data[dataType]]);
+            setPieDataType(dataType)
         }
     }, [
         EJS1MileData,
@@ -67,73 +75,85 @@ export function Popup({ facilityData }: PopupProps) {
                 <div>{STREET}</div>
                 <div>{CITY}, {STATE} {ZIP}</div>
             </div>
-            <div className={styles.popupSection}>
-                <strong className={styles.popupLabel}>TRI ID </strong> {TRIFD}
-            </div>
-            <div className={styles.popupSection}>
-                <strong className={styles.popupLabel}>EJ 1 mile</strong>
-            </div>
-            <div>
-                <a
-                    href={`https://api.ejanalysis.com/report?lon=${LONGITUDE}&lat=${LATITUDE}&buffer=1`}
-                    target="_blank"
-                >
-                    Environmental Justice Report
-                </a>
-            </div>
-            {show1MilePie && <Pie data={pieData} />}
-            <div>
-                <button
-                    type="button"
-                    onClick={() => showEJPie(1, 'pctmin')}
-                >
-                    minority
-                </button>
-                <button
-                    type="button"
-                    onClick={() => showEJPie(1, 'pctlowinc')}
-                >
-                    low-income
-                </button>
-                <button
-                    type="button"
-                    onClick={() => showEJPie(1, 'pcthisp')}
-                >
-                    hispanic
-                </button>
-            </div>
-            <div className={styles.popupSection}>
-                <strong className={styles.popupLabel}>EJ 3 mile</strong>
-            </div>
-            <div>
-                <a
-                    href={`https://api.ejanalysis.com/report?lon=${LONGITUDE}&lat=${LATITUDE}&buffer=3`}
-                    target="_blank"
-                >
-                    Environmental Justice Report
-                </a>
-            </div>
-            {show3MilePie && <Pie data={pieData} />}
-            <div>
-                <button
-                    type="button"
-                    onClick={() => showEJPie(3, 'pctmin')}
-                >
-                    minority
-                </button>
-                <button
-                    type="button"
-                    onClick={() => showEJPie(3, 'pctlowinc')}
-                >
-                    low-income
-                </button>
-                <button
-                    type="button"
-                    onClick={() => showEJPie(3, 'pcthisp')}
-                >
-                    hispanic
-                </button>
-            </div>
+            <section className={styles.popupSection}>
+                <strong className={styles.popupLabel}>TRI ID</strong>{TRIFD}
+            </section>
+            <section className={styles.popupSection}>
+                <div className={styles.popupSectionTitle}>
+                    <strong className={styles.popupLabel}>EJ 1 Mile</strong>
+                    <a
+                        href={`https://api.ejanalysis.com/report?lon=${LONGITUDE}&lat=${LATITUDE}&buffer=1`}
+                        target="_blank"
+                    >
+                        Environmental Justice Report
+                    </a>
+                </div>
+                {show1MilePie && <Pie data={pieData} type={pieDataType} />}
+                <div className={styles.popupActions}>
+                    <button
+                        className={styles.popupButton}
+                        type="button"
+                        onClick={() => showEJPie(1, EJSDataType.PCTMIN)}
+                        disabled={loading}
+                    >
+                        minority
+                    </button>
+                    <button
+                        className={styles.popupButton}
+                        type="button"
+                        onClick={() => showEJPie(1, EJSDataType.PCTLOWINC)}
+                        disabled={loading}
+                    >
+                        low-income
+                    </button>
+                    <button
+                        className={styles.popupButton}
+                        type="button"
+                        onClick={() => showEJPie(1, EJSDataType.PCTHISP)}
+                        disabled={loading}
+                    >
+                        hispanic
+                    </button>
+                </div>
+            </section>
+            <section className={styles.popupSection}>
+                <div className={styles.popupSectionTitle}>
+                    <strong className={styles.popupLabel}>EJ 3 Mile</strong>
+                    <a
+                        href={`https://api.ejanalysis.com/report?lon=${LONGITUDE}&lat=${LATITUDE}&buffer=3`}
+                        target="_blank"
+                    >
+                        Environmental Justice Report
+                    </a>
+                </div>
+                {show3MilePie && <Pie data={pieData} type={pieDataType} />}
+                <div className={styles.popupActions}>
+                    <button
+                        className={styles.popupButton}
+                        type="button"
+                        onClick={() => showEJPie(3, EJSDataType.PCTMIN)}
+                        disabled={loading}
+                    >
+                        minority
+                    </button>
+                    <button
+                        className={styles.popupButton}
+                        type="button"
+                        onClick={() => showEJPie(3, EJSDataType.PCTLOWINC)}
+                        disabled={loading}
+                    >
+                        low-income
+                    </button>
+                    <button
+                        className={styles.popupButton}
+                        type="button"
+                        onClick={() => showEJPie(3, EJSDataType.PCTHISP)}
+                        disabled={loading}
+                    >
+                        hispanic
+                    </button>
+                </div>
+            </section>
         </div>
     );
 }

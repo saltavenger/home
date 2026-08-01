@@ -5,11 +5,22 @@ import { useCreateMap, type PopupChangeParams } from './-map/createMap';
 import type { Map, Popup } from 'mapbox-gl/esm';
 
 import { Popup as TRIPopup } from './-map/popUp';
-import type { Facility } from './-map/types';
+import type { Facility } from './-map/enums';
 
 import styles from './map.module.css';
 import 'mapbox-gl/dist/mapbox-gl.css';
 import '@mapbox/mapbox-gl-geocoder/dist/mapbox-gl-geocoder.css';
+
+const EMPTY_FACILITY = {
+    TRIFD: '',
+    FACILITY_NAME: '',
+    STREET: '',
+    CITY: '',
+    STATE: '',
+    ZIP: '',
+    LATITUDE: 0,
+    LONGITUDE: 0,
+};
 
 function MapPage() {
     const mapRef = useRef<Map | null>(null);
@@ -17,16 +28,7 @@ function MapPage() {
     const popupRef = useRef<Popup | null>(null);
     const popupEventRef = useRef<(() => void) | undefined>(undefined);
     const [popupContainer, setPopupContainer] = useState<HTMLElement | undefined>();
-    const [popupData, setPopupData] = useState<Facility>({
-        TRIFD: '',
-        FACILITY_NAME: '',
-        STREET: '',
-        CITY: '',
-        STATE: '',
-        ZIP: '',
-        LATITUDE: 0,
-        LONGITUDE: 0,
-    });
+    const [popupData, setPopupData] = useState<Facility>(EMPTY_FACILITY);
 
     const onPopupChange = ({ popup, closeEvent, popupContainer, facilityData }: PopupChangeParams) => {
         popupRef.current = popup;
