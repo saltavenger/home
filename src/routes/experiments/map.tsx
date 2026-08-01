@@ -3,6 +3,7 @@ import { useRef, useEffect, useState } from 'react';
 import { createPortal } from 'react-dom';
 import { useCreateMap, type PopupChangeParams } from './-map/createMap';
 import type { Map, Popup } from 'mapbox-gl/esm';
+import { type Feature, type Polygon, type GeoJsonProperties } from 'geojson';
 
 import { Popup as TRIPopup } from './-map/popUp';
 import type { Facility } from './-map/enums';
@@ -46,6 +47,28 @@ function MapPage() {
         }));
     }
 
+    const onBufferEvent = (geoBuffer: Feature<Polygon, GeoJsonProperties>) => {
+        if (!!mapRef.current) {
+            if (mapRef.current.getSource('buffer')) {
+                mapRef.current.removeLayer('buffer-layer');
+                mapRef.current.removeSource('buffer');
+            }
+            mapRef.current.addSource('buffer', {
+                type: 'geojson',
+                data: geoBuffer
+            });
+            mapRef.current.addLayer({
+                id: 'buffer-layer',
+                type: 'fill',
+                source: 'buffer',
+                paint: {
+                    'fill-color': '#888888',
+                    'fill-opacity': 0.4
+                }
+            });
+        }
+    };
+
     const { createMap } = useCreateMap(onPopupChange);
 
     useEffect(() => {
@@ -69,7 +92,7 @@ function MapPage() {
             <main>
                 <div id="map-container" ref={mapContainerRef} className={styles.map} />
             </main>
-            {!!popupContainer && createPortal(<TRIPopup facilityData={popupData} />, popupContainer)}
+            {!!popupContainer && createPortal(<TRIPopup facilityData={popupData} onBufferEvent={onBufferEvent} />, popupContainer)}
         </>
     );
 }

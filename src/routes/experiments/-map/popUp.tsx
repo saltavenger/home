@@ -1,4 +1,7 @@
 import { useState, useCallback } from 'react';
+import circle from '@turf/circle';
+import type { Feature, Polygon, GeoJsonProperties } from "geojson";
+
 import { type Facility, EJSDataType } from './enums';
 import { getEJSData } from './-services/fetch';
 import { Pie } from './pie';
@@ -7,6 +10,7 @@ import styles from './popUp.module.css';
 
 interface PopupProps {
     facilityData: Facility;
+    onBufferEvent(bufferGeo: Feature<Polygon, GeoJsonProperties>): void;
 }
 
 interface EJSGeoData {
@@ -15,7 +19,7 @@ interface EJSGeoData {
     pctlowinc: number;
 }
 
-export function Popup({ facilityData }: PopupProps) {
+export function Popup({ facilityData, onBufferEvent }: PopupProps) {
     const { TRIFD, FACILITY_NAME, STREET, CITY, STATE, ZIP, LATITUDE, LONGITUDE } = facilityData;
     const [show1MilePie, setShow1MilePie] = useState<boolean>(false);
     const [show3MilePie, setShow3MilePie] = useState<boolean>(false);
@@ -35,7 +39,11 @@ export function Popup({ facilityData }: PopupProps) {
             setEJS3MileData(data);
             return data;
         }
-    }, [setEJS1MileData, setEJS3MileData]);
+    }, [LONGITUDE, LATITUDE, setEJS1MileData, setEJS3MileData]);
+
+    const createBuffer = useCallback((buffer: number) => {
+        return circle([LONGITUDE, LATITUDE], buffer, { units: 'miles'});
+    }, [LONGITUDE, LATITUDE]);
 
     const showEJPie = useCallback(async (buffer: number, dataType: EJSDataType) => {
         setLoading(true);
@@ -43,6 +51,8 @@ export function Popup({ facilityData }: PopupProps) {
         if (buffer === 1) {
             setShow3MilePie(false);
             setShow1MilePie(true);
+            const bufferGeo = createBuffer(buffer);
+            onBufferEvent(bufferGeo);
             const data = EJS1MileData ?? await fetchEJSData(buffer);
             setLoading(false);
             setPieData([data[dataType], 1 - data[dataType]]);
@@ -50,6 +60,8 @@ export function Popup({ facilityData }: PopupProps) {
         } else {
             setShow1MilePie(false);
             setShow3MilePie(true);
+            const bufferGeo = createBuffer(buffer);
+            onBufferEvent(bufferGeo);
             const data = EJS3MileData ?? await fetchEJSData(buffer);
             setLoading(false);
             setPieData([data[dataType], 1 - data[dataType]]);

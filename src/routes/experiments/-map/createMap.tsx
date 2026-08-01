@@ -44,6 +44,10 @@ export function useCreateMap(onPopupChange: (params: PopupChangeParams) => void)
 
         const closeEvent = () => {
             selectedFeatureId.current = undefined;
+            if (target.getSource('buffer')) {
+                target.removeLayer('buffer-layer');
+                target.removeSource('buffer');
+            }
             target.setLayoutProperty(
                 'facilities-layer',
                 'icon-image',

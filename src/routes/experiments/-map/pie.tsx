@@ -87,7 +87,6 @@ export function Pie({ data, type }: { data?: number[], type?: EJSDataType }) {
         const path1 = dValue(arcs[0]);
         const path2 = dValue(arcs[1]);
         const shapeArr = [path1, path2].filter(pathStr => pathStr !== null);
-        console.log(shapeArr);
 
         if (prevData.current === undefined) {
             const circle = select(circleRef.current);
@@ -95,9 +94,7 @@ export function Pie({ data, type }: { data?: number[], type?: EJSDataType }) {
                 Number(circle.attr('cx')),
                 Number(circle.attr('cy')),
                 Number(circle.attr('r')));
-            console.log(circleShape);
             const interpolators = separate(circleShape, shapeArr, { single: false }) as unknown as Array<(t: number) => string>;
-            console.log(interpolators)
             piePaths
                 .transition()
                 .duration(1000)
