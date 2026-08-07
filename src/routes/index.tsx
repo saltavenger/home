@@ -71,17 +71,15 @@ function App() {
               ))}
             </CardList>
             <h2>Education</h2>
-            <CardList>
-                <Card>
-                  <strong>Emerson College</strong>, <em>B.A. Visual Media Arts</em>, Concentration: New Media, 2008
-                  <li><h3>Courses</h3>
-                      <ul>
-                          <li>Front End Web Development, General Assembly, 2012</li>
-                          <li>Introduction to Computer Science, edX, MIT, 2013 <a href="https://s3.amazonaws.com/verify.edx.org/downloads/03e46306a95a47f1b29735645cfebb51/Certificate.pdf" target="_blank"><FontAwesomeIcon icon={faCertificate} /></a></li>
-                          <li>Fundamentals of Typography, UMass Lowell, 2014</li>
-                      </ul>
-                  </li>
-                </Card>
+            <CardList single>
+              <li><strong>Emerson College</strong>, <em>B.A. Visual Media Arts</em>, Concentration: New Media, 2008</li>
+              <li><h3>Courses</h3>
+                  <ul>
+                      <li>Front End Web Development, General Assembly, 2012</li>
+                      <li>Introduction to Computer Science, edX, MIT, 2013 <a href="https://s3.amazonaws.com/verify.edx.org/downloads/03e46306a95a47f1b29735645cfebb51/Certificate.pdf" target="_blank"><FontAwesomeIcon icon={faCertificate} /></a><span className="sr-only">edX Certificate</span></li>
+                      <li>Fundamentals of Typography, UMass Lowell, 2014</li>
+                  </ul>
+              </li>
             </CardList>
             <div id="app"></div>
         </main>

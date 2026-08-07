@@ -3,11 +3,15 @@
     border: 1px solid hsl(from var(--bg) h s calc(l - 1));
     padding: var(--space-10);
     border-radius: 3px;
-    overflow: auto;
 
     + .card {
         margin-top: var(--space-10);
     }
+}
+
+ul.card {
+    /* specificity override for single card lists */
+    padding: var(--space-10);
 }
 
 .cardAlt {
