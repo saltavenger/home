@@ -10,6 +10,9 @@ import { routeTree } from './routeTree.gen.ts'
 const hashHistory = createHashHistory()
 
 import './main.css';
+import '@fortawesome/fontawesome-free/css/fontawesome.css';
+import '@fortawesome/fontawesome-free/css/solid.css';
+
   // Create a new router instance
 const router = createRouter({ routeTree, history: hashHistory });
 

@@ -1,0 +1,34 @@
+.experience {
+    padding: 0;
+    margin: 0 0 var(--space-15) 0;
+    display: grid;
+    grid-template-areas:
+        "title title date" 
+        "company company company";
+    grid-template-columns: auto 1fr auto;
+    gap: var(--space-10);
+    font-weight: 600;
+    align-items: center;
+    @media screen and (min-width: 40rem) {
+        grid-template-areas: "title company date";
+        grid-template-columns: auto 1fr auto;
+    }
+}
+
+.experienceTitle {
+    grid-area: title;
+    min-width: min-content;
+}
+
+.experienceCompany {
+    font-weight: 400;
+    grid-area: company;
+    min-width: min-content;
+}
+
+.experienceDate {
+    font-size: var(--text-14);
+    color: hsl(from var(--text-heading) h s calc(l + 8));
+    grid-area: date;
+    min-width: min-content;
+}

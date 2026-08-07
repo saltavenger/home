@@ -1,25 +1,30 @@
+.header {
+    margin-bottom: 1.875rem;
+}
+
 .ribbon {
-    font-size: 2.67rem;
+    font-size: var(--text-16);
     width: 30%;
     position: relative;
     background: var(--ui-primary);
     color: var(--bg);
     text-align: center;
-    margin-top: 3rem;
+    margin-top: 1.875rem;
+    min-width: 12rem;
     &:after{
         content: "";
         position: absolute;
         display: block;
-        bottom: -0.5rem;
-        border: 1.5rem solid #35341C;
+        bottom: -0.3125rem;
+        border: 0.9375rem solid #35341C;
         z-index: -1;
-        right: -2rem;
-        border-left-width: 1.5rem;
+        right: -1.25rem;
+        border-left-width: var(--space-15); /* update this value */
         border-right-color: transparent;
     }
     h1{
-        font-size: 2.67rem;
-        padding: 0.8rem 0 0.8rem 0;
+        font-size: 1.7rem;
+        padding: var(--space-8) 0;
         margin: 0;
     }
 }
@@ -32,9 +37,9 @@
         display: block;
         border-style: solid;
         border-color: #212010 transparent transparent transparent;
-        bottom: -0.5rem;
-        right: 0.5rem;
-        border-width: 0.5rem 0.5rem 0 0;
+        bottom: -0.3125rem;
+        right: var(--space-5);
+        border-width: var(--space-5) var(--space-5) 0 0;
     }
 }
 
@@ -42,39 +47,57 @@
     font-size: 2.4rem;
     text-align: center;
     a + a {
-        margin-left: 1rem;
+        margin-left: var(--space-10);
     }
 }
 
 .content {
     display: grid;
     grid-template-columns: 1fr;
-    margin-bottom: 2rem;
-    @media screen and (min-width: 64rem) {
+    margin-bottom: var(--space-18);
+    @media screen and (min-width: 40rem) {
         grid-template-columns: minMax(min-content, 32%) 1fr;
     }
 }
 
 .side {
-    padding: 0 3rem 0 1.3rem;
+    padding: 0 var(--space-13) var(--space-13) var(--space-13);
     border-right: 0;
     border-bottom: 2px dashed var(--ui-primary);
     border-color: rgba(68, 68, 34, 0.8);
-    margin: 3rem 0 0 0;
-    @media screen and (min-width: 64rem) {
+    @media screen and (min-width: 40rem) {
         border-right: 2px dashed var(--ui-primary);
         border-bottom: 0;
     }
 }
 
 .main {
-    padding-top: 1.3rem;
-    padding-left: 1.3rem;
+    padding: var(--space-13) var(--space-13) 0 var(--space-13);
+
+    @media screen and (min-width: 40rem) {
+        padding: 0 var(--space-13);
+    }
 }
 
-.education{
-    list-style-type: none;
-    h3 {
-        margin: 0.2rem 0 0.2rem 0;
+.experience {
+    margin-top: 0;
+}
+
+.experiments li {
+    padding-left: var(--space-10);
+    
+    + li {
+        margin-top: var(--space-5);
+    }
+
+    &::marker {
+        content: '\f0c3';
+        color: var(--ui-primary);
+        font: var(--fa-font-solid);
+        font-weight: 900;
+        display: inline-block;
+        text-rendering: auto;
+        -webkit-font-smoothing: antialiased;
+        margin-right: var(--space-10);
     }
 }

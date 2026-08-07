@@ -1,19 +1,19 @@
 .popup {
-    padding: 1rem 1rem 0 1rem;
+    padding: var(--space-10) var(--space-10) 0 var(--space-10);
 }
 
 .popupSection {
-    margin-top: 1rem;
+    margin-top: var(--space-10);
 }
 
 .popupLabel {
-    font-size: 1.4rem;
-    margin-right: 1rem;
+    font-size: var(--text-14);
+    margin-right: var(--space-10);
     vertical-align: middle;
 }
 
 .popupActions {
-    margin-top: 1rem;
+    margin-top: var(--space-10);
     text-align: center;
 }
 
@@ -21,7 +21,7 @@
     background-color: var(--link-primary);
     color: contrast-color(var(--link-primary));
     border: 1px solid hsl(from var(--link-primary) h s calc(l - 5));
-    padding: 0.5rem 1rem;
+    padding: var(--space-5) var(--space-10);
     border-radius: 4px;
     cursor: pointer;
 
@@ -41,10 +41,10 @@
     }
 
     + .popupButton {
-        margin-left: 0.5rem;
+        margin-left: var(--space-5);
     }
 }
 
 .facilityName {
-    font-size: 1.5rem;
+    font-size: var(--text-16);
 }

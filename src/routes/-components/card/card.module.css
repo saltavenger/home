@@ -1,0 +1,20 @@
+.card {
+    background-color: hsl(from var(--bg) h s calc(l + 3));
+    border: 1px solid hsl(from var(--bg) h s calc(l - 1));
+    padding: var(--space-10);
+    border-radius: 3px;
+    overflow: auto;
+
+    + .card {
+        margin-top: var(--space-10);
+    }
+}
+
+.cardAlt {
+    padding: 0 var(--space-10) var(--space-10) var(--space-10);
+
+    + .cardAlt {
+        padding: var(--space-10);
+        border-top: 1px solid hsl(from var(--bg) h s calc(l - 10));
+    }
+}
