@@ -76,7 +76,7 @@ function App() {
               <li><h3>Courses</h3>
                   <ul>
                       <li>Front End Web Development, General Assembly, 2012</li>
-                      <li>Introduction to Computer Science, edX, MIT, 2013 <a href="https://s3.amazonaws.com/verify.edx.org/downloads/03e46306a95a47f1b29735645cfebb51/Certificate.pdf" target="_blank"><FontAwesomeIcon icon={faCertificate} /></a><span className="sr-only">edX Certificate</span></li>
+                      <li>Introduction to Computer Science, edX, MIT, 2013 <a href="https://s3.amazonaws.com/verify.edx.org/downloads/03e46306a95a47f1b29735645cfebb51/Certificate.pdf" target="_blank"><FontAwesomeIcon icon={faCertificate} /><span className="sr-only">edX Certificate</span></a></li>
                       <li>Fundamentals of Typography, UMass Lowell, 2014</li>
                   </ul>
               </li>
