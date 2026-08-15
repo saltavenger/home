@@ -46,7 +46,7 @@ function App() {
                 <div><a href="https://youtu.be/LHxt5KL8kxs?si=YPLEuF1DFynvh_Ll" target="_blank" rel="noopener noreferrer">The Flower (Stop Motion, After Effects)</a></div>
               </Card>
               <Card compact>
-                <div><a href="https://youtu.be/I_pGkWGe6GI?si=7EuxTTlvWus2ryLt" target="_blank" rel="noopener noreferrer">Dodo (3D - Maya)</a></div>
+                <div><a href="https://youtu.be/0XIGQRDDwsc?si=66DDt-4I6ii5-jsR" target="_blank" rel="noopener noreferrer">Dodo (3D - Maya)</a></div>
               </Card>
               <Card compact>
                 <div><a href="https://youtu.be/I_pGkWGe6GI?si=8BmkeNYAnayC88eJ" target="_blank" rel="noopener noreferrer">Casual Monster (Rotoscope)</a></div>
