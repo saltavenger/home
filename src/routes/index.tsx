@@ -24,14 +24,34 @@ function App() {
         <aside className={styles.side}>
             <p>Javascript engineer with a focus on UX and building frontend systems at scale. When not coding, I can be found doing partner acrobatics or on my bicycle.</p>
             <div className={styles.social}>
-                <a href="https://github.com/saltavenger/"><FontAwesomeIcon icon={faGithubAlt} /><span className="sr-only">Github</span></a>
-                <a href="https://www.linkedin.com/in/aareskog"><FontAwesomeIcon icon={faLinkedin} /><span className="sr-only">LinkedIn</span></a>
+                <a href="https://github.com/saltavenger/" rel="noopener noreferrer"><FontAwesomeIcon icon={faGithubAlt} /><span className="sr-only">Github</span></a>
+                <a href="https://www.linkedin.com/in/aareskog" rel="noopener noreferrer"><FontAwesomeIcon icon={faLinkedin} /><span className="sr-only">LinkedIn</span></a>
             </div>
             <h2>Experiments</h2>
             <ul className={styles.experiments}>
               <li><Link to="/experiments/map">Tri.net Map 2026</Link></li>
-              <li><a href="https://x.com/search?q=(feedandgo%2C%20OR%20rasberrypi)%20(from%3Asaltavenger)&src=typed_query&f=top" target="_blank">Raspberry Pi Cat Feeder & Companion App, 2019</a></li>
+              <li><a href="https://x.com/search?q=(feedandgo%2C%20OR%20rasberrypi)%20(from%3Asaltavenger)&src=typed_query&f=top" target="_blank" rel="noopener noreferrer">Raspberry Pi Cat Feeder & Companion App, 2019</a></li>
             </ul>
+            <h2>Art & Animation</h2>
+            <CardList>
+              <Card compact>
+                <div><a href="https://www.flickr.com/people/saltavenger/" target="_blank" rel="noopener noreferrer">Bird & Nature Photography</a></div>
+              </Card>
+              <Card compact>
+                <div>
+                  <a href="https://vimeo.com/15642684?fl=pl&fe=sh" target="_blank" rel="noopener noreferrer">ECTV Horror Marathon Intro (Apple Motion)</a>
+                </div>
+              </Card>
+              <Card compact>
+                <div><a href="https://youtu.be/LHxt5KL8kxs?si=YPLEuF1DFynvh_Ll" target="_blank" rel="noopener noreferrer">The Flower (Stop Motion, After Effects)</a></div>
+              </Card>
+              <Card compact>
+                <div><a href="https://youtu.be/I_pGkWGe6GI?si=7EuxTTlvWus2ryLt" target="_blank" rel="noopener noreferrer">Dodo (3D - Maya)</a></div>
+              </Card>
+              <Card compact>
+                <div><a href="https://youtu.be/I_pGkWGe6GI?si=8BmkeNYAnayC88eJ" target="_blank" rel="noopener noreferrer">Casual Monster (Rotoscope)</a></div>
+              </Card>
+            </CardList>
             <h2>Achievements</h2>
             <CardList>
               <Card compact>
@@ -40,7 +60,7 @@ function App() {
               </Card>
               <Card compact>
                 <div>
-                  <a href="https://youtu.be/EqzNZlwg_F0?si=6mcWNXK4fkHmeCo_" target="_blank">
+                  <a href="https://youtu.be/EqzNZlwg_F0?si=6mcWNXK4fkHmeCo_" target="_blank" rel="noopener noreferrer">
                     <strong>Club Drosslemeyer</strong>
                   </a>
                 </div>
@@ -76,7 +96,7 @@ function App() {
               <li><h3>Courses</h3>
                   <ul>
                       <li>Front End Web Development, General Assembly, 2012</li>
-                      <li>Introduction to Computer Science, edX, MIT, 2013 <a href="https://s3.amazonaws.com/verify.edx.org/downloads/03e46306a95a47f1b29735645cfebb51/Certificate.pdf" target="_blank"><FontAwesomeIcon icon={faCertificate} /><span className="sr-only">edX Certificate</span></a></li>
+                      <li>Introduction to Computer Science, edX, MIT, 2013 <a href="https://s3.amazonaws.com/verify.edx.org/downloads/03e46306a95a47f1b29735645cfebb51/Certificate.pdf" target="_blank" rel="noopener noreferrer"><FontAwesomeIcon icon={faCertificate} /><span className="sr-only">edX Certificate</span></a></li>
                       <li>Fundamentals of Typography, UMass Lowell, 2014</li>
                   </ul>
               </li>
