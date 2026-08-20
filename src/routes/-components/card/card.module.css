@@ -1,24 +1,32 @@
+/* Entries are rules inside a section, not boxes. */
 .card {
-    background-color: hsl(from var(--bg) h s calc(l + 3));
-    border: 1px solid hsl(from var(--bg) h s calc(l - 1));
-    padding: var(--space-10);
-    border-radius: 3px;
+    padding: var(--space-15) 0;
+    border-bottom: 1px solid var(--rule);
 
-    + .card {
-        margin-top: var(--space-10);
+    ul {
+        margin: var(--space-10) 0 0;
+        padding-left: var(--space-18);
+        color: var(--body);
+        font-size: var(--text-14);
+        line-height: 1.6;
+        display: flex;
+        flex-direction: column;
+        gap: 3px;
     }
 }
 
 ul.card {
     /* specificity override for single card lists */
-    padding: var(--space-10);
+    padding: var(--space-15) 0;
+    border-bottom: 0;
 }
 
 .cardAlt {
-    padding: 0 var(--space-10) var(--space-10) var(--space-10);
+    padding: var(--space-10) 0;
+    border-bottom: 1px solid var(--rule);
 
     + .cardAlt {
-        padding: var(--space-10);
-        border-top: 1px solid hsl(from var(--bg) h s calc(l - 10));
+        padding: var(--space-10) 0;
+        border-top: 0;
     }
 }

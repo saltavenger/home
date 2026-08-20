@@ -8,10 +8,12 @@ interface ExperienceTitleProps {
 
 export function ExperienceTitle({ title, company, date }: ExperienceTitleProps) {
   return (
-    <h3 className={styles.experience}>
-        <span className={styles.experienceTitle}>{title}</span>
+    <div className={styles.experience}>
+        <div className={styles.row}>
+            <span className={styles.experienceTitle}>{title}</span>
+            <span className={styles.experienceDate}>{date}</span>
+        </div>
         <span className={styles.experienceCompany}>{company}</span>
-        <span className={styles.experienceDate}>{date}</span>
-    </h3>
+    </div>
   );
 }

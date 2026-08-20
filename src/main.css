@@ -1,11 +1,33 @@
 :root {
-    --bg: #F3F3E2;
-    --ui-primary: #444422;
-    --link-primary: #DD6514;
-    --link-secondary: #F48C8C;
-    --text-heading: var(--ui-primary);
-    --text-primary: #333;
+    /* Brand tokens — see spec 10a. Contrast measured against --sheet. */
+    --board: #E4E0CF;       /* page field, behind the sheet */
+    --sheet: #F8F6ED;       /* content surface */
+    --ink: #262620;         /* headings on sheet, 14.1:1 */
+    --body: #33332B;        /* paragraphs, list items, 11.8:1 */
+    --olive: #3E4128;       /* section heads, bookmark fill, company, 9.8:1 */
+    --rust: #A6420E;        /* links, 5.7:1 */
+    --rust-deep: #6E2A08;   /* link hover, focus, 9.7:1 */
+    --muted: #5F5F48;       /* dates, metadata, 6.0:1 */
+    --keyline: #8E8775;     /* label and head borders, 3.3:1 */
+    --rule: #E0DCCA;        /* rules between entries */
+    --sheet-edge: #CFCAB4;  /* sheet border, column divider */
+
+    --font-display: 'Crimson Pro', Georgia, serif;
+    --font-body: 'Public Sans', system-ui, -apple-system, sans-serif;
+    --font-mono: 'Courier Prime', ui-monospace, monospace;
+
+    /* legacy aliases, kept so other routes keep working */
+    --bg: var(--sheet);
+    --ui-primary: var(--olive);
+    --link-primary: var(--rust);
+    --link-secondary: var(--rust-deep);
+    --text-heading: var(--olive);
+    --text-primary: var(--body);
+
+    --text-12: 0.75rem;
+    --text-13: 0.8125rem;
     --text-14: 0.875rem;
+    --text-15: 0.9375rem;
     --text-16: 1rem;
     --text-18: 1.125rem;
     --text-20: 1.25rem;
@@ -16,35 +38,69 @@
     --space-13: 0.8125rem;
     --space-15: 0.9375rem;
     --space-18: 1.25rem;
+    --space-26: 1.625rem;
+    --space-34: 2.125rem;
+    --space-46: 2.875rem;
+}
+
+/* Without this, an element's declared width is its content only — padding and border silently add on
+   top of it, so a child can end up wider than the box that was supposed to contain it. */
+*, *::before, *::after {
+    box-sizing: border-box;
 }
 
 body {
-    background: var(--bg);
-    font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+    background: var(--board);
+    font-family: var(--font-body);
     font-size: var(--text-14);
-    color: var(--text-primary);
+    color: var(--body);
     margin: 0;
     padding: 0;
 }
 
-
 a {
-    color: var(--link-primary);
+    color: var(--rust);
     &:hover, &:focus{
-        color: var(--link-secondary);
+        color: var(--rust-deep);
     }
 }
 
 p {
     margin: var(--space-10) 0 var(--space-10) 0;
+    text-wrap: pretty;
 }
 
-h1, h2, h3, h4, h5, h6 {
-    font-family: Georgia, 'Times New Roman', Times, serif
+h1 {
+    font-family: var(--font-display);
+    font-weight: 500;
+    letter-spacing: -0.012em;
+    color: var(--olive);
 }
 
-h2, h3, h4, h5, h6 {
-    color: var(--text-heading);
+/* Section heads are boxed monospace labels, matching the corner label box. */
+h2 {
+    display: inline-block;
+    margin: 0;
+    font: 700 var(--text-15)/1.2 var(--font-mono);
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    color: var(--olive);
+    border: 1px solid var(--keyline);
+    padding: var(--space-8) var(--space-13);
+}
+
+h3, h4, h5, h6 {
+    font-family: var(--font-body);
+    font-weight: 600;
+    color: var(--ink);
+}
+
+/* Monospace metadata: dates, mediums, venues. */
+.meta {
+    display: block;
+    font: 400 var(--text-13)/1.5 var(--font-mono);
+    color: var(--muted);
+    margin-top: 2px;
 }
 
 .sr-only {
