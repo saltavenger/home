@@ -16,13 +16,8 @@
     --font-body: 'Public Sans', system-ui, -apple-system, sans-serif;
     --font-mono: 'Courier Prime', ui-monospace, monospace;
 
-    /* legacy aliases, kept so other routes keep working */
-    --bg: var(--sheet);
-    --ui-primary: var(--olive);
     --link-primary: var(--rust);
     --link-secondary: var(--rust-deep);
-    --text-heading: var(--olive);
-    --text-primary: var(--body);
 
     --text-12: 0.75rem;
     --text-13: 0.8125rem;
@@ -93,14 +88,6 @@ h3, h4, h5, h6 {
     font-family: var(--font-body);
     font-weight: 600;
     color: var(--ink);
-}
-
-/* Monospace metadata: dates, mediums, venues. */
-.meta {
-    display: block;
-    font: 400 var(--text-13)/1.5 var(--font-mono);
-    color: var(--muted);
-    margin-top: 2px;
 }
 
 .sr-only {

@@ -1,34 +1,21 @@
-.board {
-    background: var(--board);
-    padding: 0;
-    min-width: min-content;
-
-    /* Below this, the board's frame is mostly wasted space on a phone — let the sheet fill the screen. */
-    @media screen and (min-width: 26rem) {
-        padding: var(--space-13);
-    }
-
-    @media screen and (min-width: 40rem) {
-        padding: var(--space-34);
-    }
-}
-
 .sheet {
-    /* Establishes this as the size reference for everything inside it: children query *this* box's
+    /* Use as size reference for everything inside it: children query *this* box's
        real width (via @container below) instead of guessing from the viewport, and containment stops
        a descendant's content from ever feeding back into and distorting this box's own width. */
     container-type: inline-size;
     position: relative;
     width: 100%;
-    max-width: 60rem;
     margin: 0 auto;
     background: var(--sheet);
     border: 0;
     box-shadow: none;
+    overflow: auto;
 
-    @media screen and (min-width: 26rem) {
+    @media screen and (min-width: 60rem) {
         border: 1px solid var(--sheet-edge);
         box-shadow: 0 2px 6px rgba(38, 38, 32, 0.08);
+        max-width: 60rem;
+        margin: var(--space-34) auto;
     }
 }
 
@@ -119,8 +106,8 @@
     margin: 0;
     border: 1px solid var(--keyline);
     padding: var(--space-10) var(--space-13);
-    /* Prefers its natural width, but never demands more than the sheet actually has — no separate breakpoint to keep in sync. */
-    min-width: min(12.25rem, 100%);
+    min-width: min-content;
+    max-width: max-content;
     display: grid;
     grid-template-columns: auto 1fr;
     gap: 2px var(--space-10);
@@ -206,7 +193,8 @@
     display: flex;
     justify-content: space-between;
     align-items: baseline;
-    gap: var(--space-18);
+    gap: var(--space-10);
+    flex-flow: wrap;
 
     h3 {
         min-width: 0;
@@ -248,14 +236,17 @@
         display: grid;
         grid-template-columns: subgrid;
         grid-column: 1 / -1;
-
-        > * {
-            min-width: 0;
-        }
     }
+}
 
-    span {
-        font: 400 var(--text-13)/1.5 var(--font-mono);
-        color: var(--muted);
-    }
+.courseDate {
+    font: 400 var(--text-13)/1.5 var(--font-mono);
+    color: var(--muted);
+}
+
+.meta {
+    display: block;
+    font: 400 var(--text-13)/1.5 var(--font-mono);
+    color: var(--muted);
+    margin-top: 2px;
 }

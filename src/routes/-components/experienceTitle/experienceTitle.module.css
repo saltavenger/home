@@ -6,7 +6,8 @@
     display: flex;
     justify-content: space-between;
     align-items: baseline;
-    gap: var(--space-18);
+    gap: var(--space-10);
+    flex-flow: wrap;
 }
 
 .experienceTitle {
