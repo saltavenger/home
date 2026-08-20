@@ -1,4 +1,4 @@
-import { createFileRoute, Link } from '@tanstack/react-router'
+import { createFileRoute } from '@tanstack/react-router'
 import { useRef, useEffect, useState } from 'react';
 import { createPortal } from 'react-dom';
 import { useCreateMap, type PopupChangeParams } from './-components/createMap';
