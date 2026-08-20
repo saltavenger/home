@@ -1,0 +1,20 @@
+.breadcrumbs {
+    margin: 0;
+    padding: 0;
+    list-style-type: none;
+}
+
+.crumb {
+    font-weight: bold;
+    display: inline-block;
+
+    + .crumb {
+        margin-left: var(--space-5);
+        color: var(--olive);
+
+        &::before {
+            content: '|';
+            margin-right: var(--space-5);
+        }
+    }
+}

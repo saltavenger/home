@@ -1,0 +1,20 @@
+.sheet {
+    /* Use as size reference for everything inside it: children query *this* box's
+       real width (via @container below) instead of guessing from the viewport, and containment stops
+       a descendant's content from ever feeding back into and distorting this box's own width. */
+    container-type: inline-size;
+    position: relative;
+    width: 100%;
+    margin: 0 auto;
+    background: var(--sheet);
+    border: 0;
+    box-shadow: none;
+    overflow: auto;
+
+    @media screen and (min-width: 60rem) {
+        border: 1px solid var(--sheet-edge);
+        box-shadow: 0 2px 6px rgba(38, 38, 32, 0.08);
+        max-width: 60rem;
+        margin: var(--space-34) auto;
+    }
+}

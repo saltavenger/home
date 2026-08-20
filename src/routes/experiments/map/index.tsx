@@ -1,14 +1,14 @@
 import { createFileRoute, Link } from '@tanstack/react-router'
 import { useRef, useEffect, useState } from 'react';
 import { createPortal } from 'react-dom';
-import { useCreateMap, type PopupChangeParams } from './-map/createMap';
+import { useCreateMap, type PopupChangeParams } from './-components/createMap';
 import type { Map, Popup } from 'mapbox-gl/esm';
 import { type Feature, type Polygon, type GeoJsonProperties } from 'geojson';
 
-import { Popup as TRIPopup } from './-map/popUp';
-import type { Facility } from './-map/enums';
+import { Popup as TRIPopup } from './-components/popUp';
+import type { Facility } from './-enums';
 
-import styles from './map.module.css';
+import styles from './index.module.css';
 import 'mapbox-gl/dist/mapbox-gl.css';
 import '@mapbox/mapbox-gl-geocoder/dist/mapbox-gl-geocoder.css';
 
@@ -89,7 +89,6 @@ function MapPage() {
     return (
         <>
             <div className={styles.mapSection}>
-                <header><Link to="/">Home</Link></header>
                 <p>Toxic Release Inventory Facility Map. Displays TRI facilities with data from 2024 TRI reports, features highlight environmental justice demographic data for areas surrounding each facility.</p>
                 <p>EJScreen tools were removed from the EPA's website in 2025 and are being hosted by independent organizations.</p>
                 <p><a href="https://eelp.law.harvard.edu/tracker/epa-added-environmental-health-indicators-to-ejscreen/" target="_blank" rel="noopener noreferrer">Learn more about Environmental Health Indicators in EJScreen</a></p>
@@ -103,6 +102,9 @@ function MapPage() {
     );
 }
 
-export const Route = createFileRoute('/experiments/map')({
+export const Route = createFileRoute('/experiments/map/')({
   component: MapPage,
+  staticData: {
+    title: 'Tri.net Map'
+  }
 });

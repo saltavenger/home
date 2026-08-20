@@ -2,9 +2,9 @@ import { useRef } from 'react';
 import * as mapboxgl from 'mapbox-gl/esm';
 import MapboxGeocoder from '@mapbox/mapbox-gl-geocoder';
 
-import MarkerSVG from '../../../assets/location-dot-default.svg';
-import MarkerHighlightSVG from '../../../assets/location-dot-highlight.svg';
-import MarkerSelectedSVG from '../../../assets/location-dot-selected.svg';
+import MarkerSVG from '@/assets/location-dot-default.svg';
+import MarkerHighlightSVG from '@/assets/location-dot-highlight.svg';
+import MarkerSelectedSVG from '@/assets/location-dot-selected.svg';
 
 const MAPBOX_TOKEN = import.meta.env.VITE_MAPBOX_TOKEN;
 

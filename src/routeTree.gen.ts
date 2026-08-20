@@ -10,43 +10,60 @@
 
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
-import { Route as ExperimentsMapRouteImport } from './routes/experiments/map'
+import { Route as ExperimentsRouteRouteImport } from './routes/experiments/route'
+import { Route as ExperimentsIndexRouteImport } from './routes/experiments/index'
+import { Route as ExperimentsMapIndexRouteImport } from './routes/experiments/map/index'
 
 const IndexRoute = IndexRouteImport.update({
   id: '/',
   path: '/',
   getParentRoute: () => rootRouteImport,
 } as any)
-const ExperimentsMapRoute = ExperimentsMapRouteImport.update({
-  id: '/experiments/map',
-  path: '/experiments/map',
+const ExperimentsRouteRoute = ExperimentsRouteRouteImport.update({
+  id: '/experiments',
+  path: '/experiments',
   getParentRoute: () => rootRouteImport,
+} as any)
+const ExperimentsIndexRoute = ExperimentsIndexRouteImport.update({
+  id: '/',
+  path: '/',
+  getParentRoute: () => ExperimentsRouteRoute,
+} as any)
+const ExperimentsMapIndexRoute = ExperimentsMapIndexRouteImport.update({
+  id: '/map/',
+  path: '/map/',
+  getParentRoute: () => ExperimentsRouteRoute,
 } as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
-  '/experiments/map': typeof ExperimentsMapRoute
+  '/experiments': typeof ExperimentsRouteRouteWithChildren
+  '/experiments/': typeof ExperimentsIndexRoute
+  '/experiments/map/': typeof ExperimentsMapIndexRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
-  '/experiments/map': typeof ExperimentsMapRoute
+  '/experiments': typeof ExperimentsIndexRoute
+  '/experiments/map': typeof ExperimentsMapIndexRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
-  '/experiments/map': typeof ExperimentsMapRoute
+  '/experiments': typeof ExperimentsRouteRouteWithChildren
+  '/experiments/': typeof ExperimentsIndexRoute
+  '/experiments/map/': typeof ExperimentsMapIndexRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/' | '/experiments/map'
+  fullPaths: '/' | '/experiments' | '/experiments/' | '/experiments/map/'
   fileRoutesByTo: FileRoutesByTo
-  to: '/' | '/experiments/map'
-  id: '__root__' | '/' | '/experiments/map'
+  to: '/' | '/experiments' | '/experiments/map'
+  id: '__root__' | '/' | '/experiments' | '/experiments/' | '/experiments/map/'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
-  ExperimentsMapRoute: typeof ExperimentsMapRoute
+  ExperimentsRouteRoute: typeof ExperimentsRouteRouteWithChildren
 }
 
 declare module '@tanstack/react-router' {
@@ -58,19 +75,46 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof IndexRouteImport
       parentRoute: typeof rootRouteImport
     }
-    '/experiments/map': {
-      id: '/experiments/map'
-      path: '/experiments/map'
-      fullPath: '/experiments/map'
-      preLoaderRoute: typeof ExperimentsMapRouteImport
+    '/experiments': {
+      id: '/experiments'
+      path: '/experiments'
+      fullPath: '/experiments'
+      preLoaderRoute: typeof ExperimentsRouteRouteImport
       parentRoute: typeof rootRouteImport
+    }
+    '/experiments/': {
+      id: '/experiments/'
+      path: '/'
+      fullPath: '/experiments/'
+      preLoaderRoute: typeof ExperimentsIndexRouteImport
+      parentRoute: typeof ExperimentsRouteRoute
+    }
+    '/experiments/map/': {
+      id: '/experiments/map/'
+      path: '/map'
+      fullPath: '/experiments/map/'
+      preLoaderRoute: typeof ExperimentsMapIndexRouteImport
+      parentRoute: typeof ExperimentsRouteRoute
     }
   }
 }
 
+interface ExperimentsRouteRouteChildren {
+  ExperimentsIndexRoute: typeof ExperimentsIndexRoute
+  ExperimentsMapIndexRoute: typeof ExperimentsMapIndexRoute
+}
+
+const ExperimentsRouteRouteChildren: ExperimentsRouteRouteChildren = {
+  ExperimentsIndexRoute: ExperimentsIndexRoute,
+  ExperimentsMapIndexRoute: ExperimentsMapIndexRoute,
+}
+
+const ExperimentsRouteRouteWithChildren =
+  ExperimentsRouteRoute._addFileChildren(ExperimentsRouteRouteChildren)
+
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
-  ExperimentsMapRoute: ExperimentsMapRoute,
+  ExperimentsRouteRoute: ExperimentsRouteRouteWithChildren,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)

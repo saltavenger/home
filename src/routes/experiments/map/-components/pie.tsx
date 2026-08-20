@@ -9,7 +9,7 @@ import {
     easePolyInOut,
 } from 'd3';
 import { separate,  interpolateAll } from 'flubber';
-import { EJSDataType } from './enums';
+import { EJSDataType } from '../-enums';
 
 import styles from './pie.module.css';
 

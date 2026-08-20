@@ -2,8 +2,8 @@ import { useState, useCallback } from 'react';
 import circle from '@turf/circle';
 import type { Feature, Polygon, GeoJsonProperties } from "geojson";
 
-import { type Facility, EJSDataType } from './enums';
-import { getEJSData } from './-services/fetch';
+import { type Facility, EJSDataType } from '../-enums';
+import { getEJSData } from '../-services/fetch';
 import { Pie } from './pie';
 
 import styles from './popUp.module.css';

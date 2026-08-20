@@ -42,16 +42,23 @@ function App() {
               <div><Link to="/experiments/map">Tri.net Map</Link><span className={styles.meta}>2026</span></div>
             </Card>
             <Card compact>
-              <div><a href="https://x.com/search?q=(feedandgo%2C%20OR%20rasberrypi)%20(from%3Asaltavenger)&src=typed_query&f=top" target="_blank" rel="noopener noreferrer">Raspberry Pi cat feeder &amp; companion app</a><span className={styles.meta}>2019</span></div>
+              <div>
+                <a
+                  href="https://x.com/search?q=(feedandgo%2C%20OR%20rasberrypi)%20(from%3Asaltavenger)&src=typed_query&f=top"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >Raspberry Pi Cat Feeder &amp; Companion App</a>
+                <span className={styles.meta}>2019</span>
+              </div>
             </Card>
           </CardList>
           <h2 className={styles.sideSectionGap}>Art &amp; animation</h2>
           <CardList>
             <Card compact>
-              <div><a href="https://www.flickr.com/people/saltavenger/" target="_blank" rel="noopener noreferrer">Bird &amp; nature photography</a><span className={styles.meta}>Flickr</span></div>
+              <div><a href="https://www.flickr.com/people/saltavenger/" target="_blank" rel="noopener noreferrer">Bird &amp; Nature Photography</a><span className={styles.meta}>Flickr</span></div>
             </Card>
             <Card compact>
-              <div><a href="https://vimeo.com/15642684?fl=pl&fe=sh" target="_blank" rel="noopener noreferrer">ECTV Horror Marathon intro</a><span className={styles.meta}>Apple Motion</span></div>
+              <div><a href="https://vimeo.com/15642684?fl=pl&fe=sh" target="_blank" rel="noopener noreferrer">ECTV Horror Marathon Intro</a><span className={styles.meta}>Apple Motion</span></div>
             </Card>
             <Card compact>
               <div><a href="https://youtu.be/LHxt5KL8kxs?si=YPLEuF1DFynvh_Ll" target="_blank" rel="noopener noreferrer">The Flower</a><span className={styles.meta}>Stop motion, After Effects</span></div>

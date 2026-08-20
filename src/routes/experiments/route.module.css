@@ -1,0 +1,11 @@
+.sheet {
+    composes: sheet from '../-styles/sheet.module.css';
+
+    &.sheetLarge {
+        padding: var(--space-40) var(--space-46);
+        
+        @media screen and (min-width: 60rem) {
+            max-width: calc(100svw - var(--space-40));
+        }
+    }
+}

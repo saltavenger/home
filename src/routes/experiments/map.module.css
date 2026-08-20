@@ -1,8 +1,0 @@
-.mapSection {
-    margin: var(--space-10) 3.25rem;
-}
-
-.map {
-    height: calc(100svh - 3.5rem);
-    margin: var(--space-10) 3.25rem var(--space-18) 3.25rem;
-}

@@ -1,28 +1,11 @@
 .sheet {
-    /* Use as size reference for everything inside it: children query *this* box's
-       real width (via @container below) instead of guessing from the viewport, and containment stops
-       a descendant's content from ever feeding back into and distorting this box's own width. */
-    container-type: inline-size;
-    position: relative;
-    width: 100%;
-    margin: 0 auto;
-    background: var(--sheet);
-    border: 0;
-    box-shadow: none;
-    overflow: auto;
-
-    @media screen and (min-width: 60rem) {
-        border: 1px solid var(--sheet-edge);
-        box-shadow: 0 2px 6px rgba(38, 38, 32, 0.08);
-        max-width: 60rem;
-        margin: var(--space-34) auto;
-    }
+    composes: sheet from './-styles/sheet.module.css';
 }
 
 .header {
     position: relative;
     /* Bottom padding clears the bookmark's overhang below this narrower h1; wide layout doesn't need it. */
-    padding: var(--space-34) var(--space-18) 1.75rem;
+    padding: var(--space-34) var(--space-20) 1.75rem;
 
     /* Below this the ribbon runs into the name itself, not just the intro text below — hiding it (see .bookmark) is simpler than chasing clearance. Nothing left to clear, so drop the extra bottom padding. Sized off this sheet's own width, not the viewport, so it stays correct even if the board's outer padding changes. */
     @container (max-width: 17.4375rem) {
@@ -30,7 +13,7 @@
     }
 
     @container (min-width: 36rem) {
-        padding: 2.5rem var(--space-46) 0;
+        padding: var(--space-40) var(--space-46) 0;
     }
 
     h1 {
@@ -67,14 +50,14 @@
 .intro {
     display: grid;
     grid-template-columns: minmax(0, 1fr);
-    gap: var(--space-18);
+    gap: var(--space-20);
     align-items: start;
-    padding: var(--space-26) var(--space-18) var(--space-18);
+    padding: var(--space-26) var(--space-20) var(--space-20);
 
     @container (min-width: 36rem) {
         grid-template-columns: minmax(0, 1fr) auto;
-        gap: var(--space-18) 1.875rem;
-        padding: var(--space-26) var(--space-46) var(--space-18);
+        gap: var(--space-20) 1.875rem;
+        padding: var(--space-26) var(--space-46) var(--space-20);
     }
 }
 
@@ -92,7 +75,7 @@
 .social {
     display: flex;
     align-items: center;
-    gap: var(--space-18);
+    gap: var(--space-20);
     font-size: 1.625rem;
     margin-top: var(--space-15);
 
@@ -137,11 +120,11 @@
 .side {
     /* min-width: 0 stops long unbroken text (a link, a mono date) from forcing this grid track wider than the sheet. */
     min-width: 0;
-    padding: 0 var(--space-18) var(--space-34) var(--space-18);
+    padding: 0 var(--space-20) var(--space-34) var(--space-20);
     border-bottom: 1px solid var(--sheet-edge);
 
     @container (min-width: 36rem) {
-        padding: var(--space-5) 2.125rem var(--space-34) var(--space-46);
+        padding: var(--space-5) var(--space-34) var(--space-34) var(--space-46);
         border-bottom: 0;
         border-right: 1px solid var(--sheet-edge);
     }
@@ -149,10 +132,10 @@
 
 .main {
     min-width: 0;
-    padding: var(--space-18) var(--space-18) var(--space-34);
+    padding: var(--space-20) var(--space-20) var(--space-34);
 
     @container (min-width: 36rem) {
-        padding: var(--space-5) var(--space-46) 2.5rem 2.125rem;
+        padding: var(--space-5) var(--space-46) var(--space-40) var(--space-34);
     }
 }
 
@@ -162,7 +145,7 @@
     flex-wrap: wrap;
     justify-content: space-between;
     align-items: baseline;
-    gap: var(--space-5) var(--space-18);
+    gap: var(--space-5) var(--space-20);
 }
 
 .headCount {
@@ -219,13 +202,13 @@
     letter-spacing: 0.1em;
     text-transform: uppercase;
     color: var(--muted);
-    margin: var(--space-18) 0 0;
+    margin: var(--space-20) 0 0;
 }
 
 .courses {
     display: grid;
     grid-template-columns: auto 1fr;
-    gap: 7px var(--space-18);
+    gap: 7px var(--space-20);
     margin: var(--space-10) 0 0;
     padding: 0;
     list-style: none;
