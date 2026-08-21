@@ -15,6 +15,7 @@ function RedesignPage() {
       <h2>Adventures in AI</h2>
       <p>I have been working my way through the course, <a href="https://aianddesign.systems/" rel="noopener noreferrer" target="_blank">AI & Design Systems</a>, which is a collab between Brad Frost & Southleft. My neglected portfolio site seemed like a good place to apply the lessons.</p>
       <p>While at Chewy I was often focused on large scale technical migrations and infrastructure. I used AI frequently for deep research and outsourcing menial tasks. But, I found myself lacking time to fully explore the design-oriented side of AI.</p>
+      <p className={styles.info}><strong>Note:</strong> I plan to update this page as I go through the course, this is a work in progress.</p>
       <h3>The Beginning</h3>
       <p>I started this journey without AI. As much as AI is cool, I wanted to refamiliarize myself with the code, and this is very familiar and easy territory for me. The plan was to convert my old plain HTML/CSS site from nearly two decades ago to react so that I could build on it & set up a CICD pipeline in github actions.</p>
       <div className={styles.redesignImg}>

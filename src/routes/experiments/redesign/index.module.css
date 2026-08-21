@@ -6,3 +6,11 @@
 .redesignImg {
     text-align: center;
 }
+
+.info {
+    color: var(--rust-deep);
+    background-color: var(--rule);
+    border: 1px solid var(--rust);
+    padding: var(--space-10);
+    border-radius: 4px;
+}
