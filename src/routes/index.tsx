@@ -39,6 +39,9 @@ function App() {
           <h2>Experiments</h2>
           <CardList>
             <Card compact>
+              <div><Link to="/experiments/redesign">Portfolio Redesign & AI</Link><span className={styles.meta}>2026</span></div>
+            </Card>
+            <Card compact>
               <div><Link to="/experiments/map">Tri.net Map</Link><span className={styles.meta}>2026</span></div>
             </Card>
             <Card compact>
@@ -120,6 +123,7 @@ function App() {
             <div className={styles.educationSchool}>Emerson College — concentration, New Media</div>
             <p className={styles.continuingLabel}>Continuing education</p>
             <ul className={styles.courses}>
+              <li><span className={styles.courseDate}>2026</span><div>AI & Design Systems, Southleft & Brad Frost Web</div></li>
               <li><span className={styles.courseDate}>2012</span><div>Front End Web Development, General Assembly</div></li>
               <li><span className={styles.courseDate}>2013</span><div>Introduction to Computer Science, edX / MIT <a href="https://s3.amazonaws.com/verify.edx.org/downloads/03e46306a95a47f1b29735645cfebb51/Certificate.pdf" target="_blank" rel="noopener noreferrer"><FontAwesomeIcon icon={faCertificate} /><span className="sr-only">edX Certificate</span></a></div></li>
               <li><span className={styles.courseDate}>2014</span><div>Fundamentals of Typography, UMass Lowell</div></li>

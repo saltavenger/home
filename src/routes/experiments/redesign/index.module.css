@@ -1,0 +1,8 @@
+.container {
+    margin: var(--space-40) auto;
+    max-width: 80rem;
+}
+
+.redesignImg {
+    text-align: center;
+}

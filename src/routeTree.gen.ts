@@ -13,6 +13,7 @@ import { Route as IndexRouteImport } from './routes/index'
 import { Route as ExperimentsRouteRouteImport } from './routes/experiments/route'
 import { Route as ExperimentsIndexRouteImport } from './routes/experiments/index'
 import { Route as ExperimentsMapIndexRouteImport } from './routes/experiments/map/index'
+import { Route as ExperimentsRedesignIndexRouteImport } from './routes/experiments/redesign/index'
 
 const IndexRoute = IndexRouteImport.update({
   id: '/',
@@ -34,17 +35,25 @@ const ExperimentsMapIndexRoute = ExperimentsMapIndexRouteImport.update({
   path: '/map/',
   getParentRoute: () => ExperimentsRouteRoute,
 } as any)
+const ExperimentsRedesignIndexRoute =
+  ExperimentsRedesignIndexRouteImport.update({
+    id: '/redesign/',
+    path: '/redesign/',
+    getParentRoute: () => ExperimentsRouteRoute,
+  } as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/experiments': typeof ExperimentsRouteRouteWithChildren
   '/experiments/': typeof ExperimentsIndexRoute
   '/experiments/map/': typeof ExperimentsMapIndexRoute
+  '/experiments/redesign/': typeof ExperimentsRedesignIndexRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/experiments': typeof ExperimentsIndexRoute
   '/experiments/map': typeof ExperimentsMapIndexRoute
+  '/experiments/redesign': typeof ExperimentsRedesignIndexRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
@@ -52,13 +61,25 @@ export interface FileRoutesById {
   '/experiments': typeof ExperimentsRouteRouteWithChildren
   '/experiments/': typeof ExperimentsIndexRoute
   '/experiments/map/': typeof ExperimentsMapIndexRoute
+  '/experiments/redesign/': typeof ExperimentsRedesignIndexRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/' | '/experiments' | '/experiments/' | '/experiments/map/'
+  fullPaths:
+    | '/'
+    | '/experiments'
+    | '/experiments/'
+    | '/experiments/map/'
+    | '/experiments/redesign/'
   fileRoutesByTo: FileRoutesByTo
-  to: '/' | '/experiments' | '/experiments/map'
-  id: '__root__' | '/' | '/experiments' | '/experiments/' | '/experiments/map/'
+  to: '/' | '/experiments' | '/experiments/map' | '/experiments/redesign'
+  id:
+    | '__root__'
+    | '/'
+    | '/experiments'
+    | '/experiments/'
+    | '/experiments/map/'
+    | '/experiments/redesign/'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
@@ -96,17 +117,26 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof ExperimentsMapIndexRouteImport
       parentRoute: typeof ExperimentsRouteRoute
     }
+    '/experiments/redesign/': {
+      id: '/experiments/redesign/'
+      path: '/redesign'
+      fullPath: '/experiments/redesign/'
+      preLoaderRoute: typeof ExperimentsRedesignIndexRouteImport
+      parentRoute: typeof ExperimentsRouteRoute
+    }
   }
 }
 
 interface ExperimentsRouteRouteChildren {
   ExperimentsIndexRoute: typeof ExperimentsIndexRoute
   ExperimentsMapIndexRoute: typeof ExperimentsMapIndexRoute
+  ExperimentsRedesignIndexRoute: typeof ExperimentsRedesignIndexRoute
 }
 
 const ExperimentsRouteRouteChildren: ExperimentsRouteRouteChildren = {
   ExperimentsIndexRoute: ExperimentsIndexRoute,
   ExperimentsMapIndexRoute: ExperimentsMapIndexRoute,
+  ExperimentsRedesignIndexRoute: ExperimentsRedesignIndexRoute,
 }
 
 const ExperimentsRouteRouteWithChildren =
