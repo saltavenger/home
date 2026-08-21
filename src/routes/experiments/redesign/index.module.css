@@ -3,8 +3,15 @@
     max-width: 80rem;
 }
 
-.redesignImg {
+.redesignImgContainer {
     text-align: center;
+    min-width: 200px;
+    max-width: 600px;
+    position: relative;
+}
+
+.redesignImg {
+    width: 100%;
 }
 
 .info {
