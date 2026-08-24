@@ -4,6 +4,8 @@ import { createPortal } from 'react-dom';
 import { useCreateMap, type PopupChangeParams } from './-components/createMap';
 import type { Map, Popup } from 'mapbox-gl/esm';
 import type { Feature, Polygon, GeoJsonProperties } from 'geojson';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faArrowUpRightFromSquare } from '@fortawesome/free-solid-svg-icons';
 
 import { Popup as TRIPopup } from './-components/popUp';
 import type { Facility } from './-enums';
@@ -91,8 +93,8 @@ function MapPage() {
             <div className={styles.mapSection}>
                 <p>Toxic Release Inventory Facility Map. Displays TRI facilities with data from 2024 TRI reports, features highlight environmental justice demographic data for areas surrounding each facility.</p>
                 <p>EJScreen tools were removed from the EPA's website in 2025 and are being hosted by independent organizations.</p>
-                <p><a href="https://eelp.law.harvard.edu/tracker/epa-added-environmental-health-indicators-to-ejscreen/" target="_blank" rel="noopener noreferrer">Learn more about Environmental Health Indicators in EJScreen</a></p>
-                <p><a href="https://github.com/saltavenger/home/tree/main/src/routes/experiments" target="_blank">Github repository</a> - Mapbox, D3, Motion</p>
+                <p><a href="https://eelp.law.harvard.edu/tracker/epa-added-environmental-health-indicators-to-ejscreen/" target="_blank" rel="noopener noreferrer">Learn more about Environmental Health Indicators in EJScreen <FontAwesomeIcon icon={faArrowUpRightFromSquare} /></a></p>
+                <p><a href="https://github.com/saltavenger/home/tree/main/src/routes/experiments" target="_blank">Github repository <FontAwesomeIcon icon={faArrowUpRightFromSquare} /></a> - Mapbox, D3, Motion</p>
             </div>
             <main>
                 <div id="map-container" ref={mapContainerRef} className={styles.map} />

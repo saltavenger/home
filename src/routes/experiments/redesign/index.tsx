@@ -1,4 +1,6 @@
 import { createFileRoute, Link } from '@tanstack/react-router';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faArrowUpRightFromSquare } from '@fortawesome/free-solid-svg-icons';
 
 import styles from './index.module.css';
 import { Media } from '@/routes/-components/media';
@@ -42,7 +44,7 @@ function RedesignPage() {
           </li>
         </ul>
       </nav>
-      <p>I have been working my way through the course, <a href="https://aianddesign.systems/" rel="noopener noreferrer" target="_blank">AI & Design Systems</a>, which is a collab between Brad Frost & Southleft. My neglected portfolio site seemed like a good place to apply the lessons.</p>
+      <p>I have been working my way through the course, <a href="https://aianddesign.systems/" rel="noopener noreferrer" target="_blank">AI & Design Systems <FontAwesomeIcon icon={faArrowUpRightFromSquare} /></a>, which is a collab between Brad Frost & Southleft. My neglected portfolio site seemed like a good place to apply the lessons.</p>
       <p>While at Chewy I was often focused on large scale technical migrations and infrastructure. I used AI frequently for deep research and outsourcing menial tasks. But, I found myself lacking time to fully explore the design-oriented side of AI. Having been on the other side reviewing tons of AI-generated code, I am especially interested in the nuances of effectively using a design system to enhance code quality and accessibility.</p>
       <p className={styles.info}><strong>Note:</strong> I plan to update this page, and my portfolio, as I go through the course. Consider it a living document</p>
       <h3 id="beginning">The beginning</h3>
@@ -160,7 +162,7 @@ function RedesignPage() {
       <div className={styles.twoColumn}>
         <p>Overall, I liked the typography of the designs, but the top-level header didn't feel balanced to me. I thought the options either had too much flourish, or not enough. I asked Claude to generate additional header candidates. I settled on the last option, 4e, as it was a serif that still felt weighted and grounded.</p>
         <div className={styles.imgContainer}>
-          <Media caption="Claude generated typography options" borderless>
+          <Media caption="Claude generated typography options" noBorder>
             <img
               src="/redesign/type-options.png"
               className={styles.img}

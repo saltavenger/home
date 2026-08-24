@@ -9,12 +9,13 @@ interface MediaProps {
   /** Optional caption shown under the media, inline and in the dialog. */
   caption?: string;
   children: ReactNode;
-  borderless?: boolean;
+  noBorder?: boolean;
+  trigger?: ReactNode;
 }
 
-export function Media({ caption, children, borderless = false}: MediaProps) {
+export function Media({ caption, children, noBorder = false, trigger }: MediaProps) {
   const [open, setOpen] = useState(false);
-  const triggerClasses = borderless ? `${styles.imageTrigger} ${styles.imageTriggerBorderless}` : styles.imageTrigger;
+  const triggerClasses = noBorder ? `${styles.imageTrigger} ${styles.imageTriggerBorderless}` : styles.imageTrigger;
 
   // Now that .content fills the whole screen, Radix's own "click outside Content"
   // auto-close has nowhere to fire from — everything is inside Content. Close only
@@ -28,19 +29,26 @@ export function Media({ caption, children, borderless = false}: MediaProps) {
 
   return (
     <Dialog.Root open={open} onOpenChange={setOpen}>
-      <figure className={styles.figure}>
+      {trigger ? (
         <Dialog.Trigger asChild>
-            <button type="button" className={triggerClasses} aria-label={`View full-screen`}>
-              <div className={styles.thumbnail}>
-                { children }
-              </div>
-              <span className={styles.expandHint} aria-hidden="true">
-                <FontAwesomeIcon icon={faExpand} />
-              </span>
-            </button>
-          </Dialog.Trigger>
-        {caption && <figcaption className={styles.caption}>{caption}</figcaption>}
-      </figure>
+          { trigger }
+        </Dialog.Trigger>
+      ) :
+      (
+        <figure className={styles.figure}>
+          <Dialog.Trigger asChild>
+              <button type="button" className={triggerClasses} aria-label={`View full-screen`}>
+                <div className={styles.thumbnail}>
+                  { children }
+                </div>
+                <span className={styles.expandHint} aria-hidden="true">
+                  <FontAwesomeIcon icon={faExpand} />
+                </span>
+              </button>
+            </Dialog.Trigger>
+          {caption && <figcaption className={styles.caption}>{caption}</figcaption>}
+        </figure>
+      )} 
 
       <Dialog.Portal>
         <Dialog.Overlay className={styles.overlay} />
@@ -58,7 +66,7 @@ export function Media({ caption, children, borderless = false}: MediaProps) {
             </div>
             <div className={styles.mediaArea} onClick={closeIfBackground}>
               <div className={styles.fullMedia} onClick={closeIfBackground}>
-                {children}
+                { children }
               </div>
               { !!caption && (
                 <Dialog.Description className={styles.description}>

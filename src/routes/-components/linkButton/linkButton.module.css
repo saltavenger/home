@@ -1,0 +1,15 @@
+.linkButton {
+    border: none;
+    background-color: transparent;
+    color: var(--rust);
+    margin: 0;
+    padding: 0;
+    cursor: pointer;
+    text-decoration: underline;
+    font-size: var(--text-14);
+    text-align: left;
+
+    &:hover, &:focus {
+        color: var(--rust-deep);
+    }
+}

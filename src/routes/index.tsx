@@ -3,11 +3,13 @@ import {
   faGithubAlt,
   faLinkedin,
 } from '@fortawesome/free-brands-svg-icons';
-import { faCertificate } from '@fortawesome/free-solid-svg-icons';
+import { faCertificate, faArrowUpRightFromSquare } from '@fortawesome/free-solid-svg-icons';
 import { createFileRoute, Link } from '@tanstack/react-router';
 import { Card } from './-components/card';
 import { CardList } from './-components/cardList';
 import { ExperienceTitle } from './-components/experienceTitle';
+import { Media } from './-components/media';
+import { LinkButton } from './-components/linkButton';
 
 import data from '../assets/experience.json';
 
@@ -58,19 +60,107 @@ function App() {
           <h2 className={styles.sideSectionGap}>Art &amp; animation</h2>
           <CardList>
             <Card compact>
-              <div><a href="https://www.flickr.com/people/saltavenger/" target="_blank" rel="noopener noreferrer">Bird &amp; Nature Photography</a><span className={styles.meta}>Flickr</span></div>
+              <div><a href="https://www.flickr.com/people/saltavenger/" target="_blank" rel="noopener noreferrer">Bird &amp; Nature Photography <FontAwesomeIcon icon={faArrowUpRightFromSquare} /></a><span className={styles.meta}>Flickr</span></div>
             </Card>
             <Card compact>
-              <div><a href="https://vimeo.com/15642684?fl=pl&fe=sh" target="_blank" rel="noopener noreferrer">ECTV Horror Marathon Intro</a><span className={styles.meta}>Apple Motion</span></div>
+              <div>
+                <Media
+                  caption="ECTV Horror Marathon intro"
+                  noBorder
+                  trigger={
+                    <LinkButton type="button">
+                      ECTV Horror Marathon intro
+                    </LinkButton>
+                  }
+                >
+                  <iframe 
+                      title="vimeo-player"
+                      src="https://player.vimeo.com/video/15642684?h=24e3e3fb74"
+                      width="640"
+                      height="360"
+                      frameBorder="0"
+                      referrerPolicy="strict-origin-when-cross-origin"
+                      allow="autoplay; fullscreen; picture-in-picture; clipboard-write; encrypted-media; web-share"
+                      allowFullScreen
+                    />
+                </Media>
+                <span className={styles.meta}>Apple Motion</span>
+              </div>
             </Card>
             <Card compact>
-              <div><a href="https://youtu.be/LHxt5KL8kxs?si=YPLEuF1DFynvh_Ll" target="_blank" rel="noopener noreferrer">The Flower</a><span className={styles.meta}>Stop motion, After Effects</span></div>
+              <div>
+                <Media
+                  caption="The Flower"
+                  noBorder
+                  trigger={
+                    <LinkButton>
+                      The Flower
+                    </LinkButton>
+                  }
+                >
+                  <iframe
+                    width="560"
+                    height="315"
+                    src="https://www.youtube.com/embed/LHxt5KL8kxs?si=IfiCoxlL7RgWY7aa"
+                    title="YouTube video player"
+                    frameBorder="0"
+                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                    referrerPolicy="strict-origin-when-cross-origin"
+                    allowFullScreen
+                  />
+                </Media>
+                <span className={styles.meta}>Stop motion, After Effects</span>
+              </div>
             </Card>
             <Card compact>
-              <div><a href="https://youtu.be/0XIGQRDDwsc?si=66DDt-4I6ii5-jsR" target="_blank" rel="noopener noreferrer">Dodo</a><span className={styles.meta}>3D, Maya</span></div>
+              <div>
+                <Media
+                  caption="Dodo"
+                  noBorder
+                  trigger={
+                    <LinkButton>
+                      Dodo
+                    </LinkButton>
+                  }
+                >
+                  <iframe
+                    width="560"
+                    height="315"
+                    src="https://www.youtube.com/embed/0XIGQRDDwsc?si=66DDt-4I6ii5-jsR"
+                    title="YouTube video player"
+                    frameBorder="0"
+                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                    referrerPolicy="strict-origin-when-cross-origin"
+                    allowFullScreen
+                  />
+                </Media>
+                <span className={styles.meta}>3D, Maya</span>
+              </div>
             </Card>
             <Card compact>
-              <div><a href="https://youtu.be/I_pGkWGe6GI?si=8BmkeNYAnayC88eJ" target="_blank" rel="noopener noreferrer">Casual Monster</a><span className={styles.meta}>Rotoscope</span></div>
+              <div>
+                <Media
+                  caption="Casual monster"
+                  noBorder
+                  trigger={
+                    <LinkButton type="button">
+                      Casual monster
+                    </LinkButton>
+                  }
+                >
+                  <iframe
+                    width="560"
+                    height="315"
+                    src="https://www.youtube.com/embed/I_pGkWGe6GI?si=8BmkeNYAnayC88eJ"
+                    title="YouTube video player"
+                    frameBorder="0"
+                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                    referrerPolicy="strict-origin-when-cross-origin"
+                    allowFullScreen
+                  />
+                </Media>
+                <span className={styles.meta}>Rotoscope</span>
+              </div>
             </Card>
           </CardList>
         </aside>
@@ -99,9 +189,26 @@ function App() {
             </Card>
             <Card compact>
               <div>
-                <a href="https://youtu.be/EqzNZlwg_F0?si=6mcWNXK4fkHmeCo_" target="_blank" rel="noopener noreferrer">
-                  <strong>Club Drosslemeyer</strong>
-                </a>
+                <Media
+                  caption="Club Drosslemeyer"
+                  noBorder
+                  trigger={
+                    <LinkButton>
+                      <strong>Club Drosslemeyer</strong>
+                    </LinkButton>
+                  }
+                >
+                  <iframe
+                    width="560"
+                    height="315"
+                    src="https://www.youtube.com/embed/EqzNZlwg_F0?si=6mcWNXK4fkHmeCo_"
+                    title="YouTube video player"
+                    frameBorder="0"
+                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                    referrerPolicy="strict-origin-when-cross-origin"
+                    allowFullScreen
+                  />
+                </Media>
               </div>
               <span className={styles.meta}>Oberon Theater — acrobatic performance, 2016</span>
             </Card>
