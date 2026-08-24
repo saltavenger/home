@@ -30,9 +30,14 @@ function RedesignPage() {
           </li>
           <li><Link to="." hash="code">Claude Code</Link>
             <ul>
-              <li><Link to="." hash="pros">What Claude did great</Link></li>
+              <li><Link to="." hash="pros">What Claude did well</Link></li>
               <li><Link to="." hash="cons">What Claude failed</Link></li>
-              <li><Link to="." hash="improve">How can I improve my results?</Link></li>
+              <li><Link to="." hash="improve">How can I improve my results?</Link>
+                <ul>
+                  <li><Link to="." hash="hypothesis">Hypothesis</Link></li>
+                  <li><Link to="." hash="testing">Testing the hypothesis</Link></li>
+                </ul>
+              </li>
             </ul>
           </li>
         </ul>
@@ -296,9 +301,29 @@ function RedesignPage() {
         </div>
       </div>
       <h3 id="code">Claude Code</h3>
-      <h4 id="pros">What Claude did great</h4>
+      <p>With the design for the home page finished and basic brand guidelines set, I had Claude Code update my existing site using the design that we built together.</p>
+      <h4 id="pros">What Claude did well</h4>
+      <ul>
+        <li>Claude reused patterns I already established in my codebase well. For example: file organization, class names, using CSS modules.</li>
+        <li>At desktop sizes the code output was pixel-perfect with the design</li>
+        <li>Having prompted it to use WCAG guidelines, it accounted for basic accessibility requirements.</li>
+      </ul>
       <h4 id="cons">Where Claude failed</h4>
+      <ul>
+        <li>Responsive design. There were some very serious overflow issues with text exceeding containers, scrolling issues, content that overlapped at certain screen sizes.</li>
+        <li>Some hallucinated or odd choices in data that claude chose to highlight</li>
+        <li>A small amount of superfulous HTML and CSS made the code more complicated than it needed to be. It made troubleshooting overflow issues harder than code I would write myself.</li>
+      </ul>
       <h4 id="improve">How can I improve my results?</h4>
+      <h5 id="Hypothesis">Hypothesis</h5>
+      <p>Going through the course, and speaking with friends and colleagues – the biggest takeaway I've had so far is making sure I am giving enough high quality context to get the results I need.</p>
+      <p>With that in mind, I do think there's additional context I could have given that may have gotten me better results.</p>
+      <ul>
+        <li>I took the simplicity of this website for granted and wasn't explicit about mobile designs: At the design phase, I should have told it to design the website using a mobile first approach. I should have mentioned that the site is responsive and that we will need it to work with varying devices.</li>
+        <li>There were choices that seemed obvious to me that the AI did not make without me revising and prompting it to. If they are obvious to me, they should be spelled out in advance either in the brief or in a skill.</li>
+        <li>This is a simple portfolio site, and a design system seemed overkill. But, having explicit guidelines and pre-existing components to build from that are already responsive & accessible would have saved me some grief. I might not need a full design system, but I definitely could have used even a starter one like radix (that I eventually incorporated), or tailwind for CSS from the beginning.</li>
+      </ul>
+      <h5 id="testing">Testing the hypothesis</h5>
     </main>
   );
 }
