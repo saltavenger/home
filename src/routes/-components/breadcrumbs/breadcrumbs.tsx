@@ -14,7 +14,7 @@ export function Breadcrumbs() {
     const validRoutes = useMemo(() => {
         return matches.filter((m) => m.staticData?.title)
     }, [matches]);
-    console.log(matches);
+
     return (
         <nav>
             <ul className={styles.breadcrumbs}>

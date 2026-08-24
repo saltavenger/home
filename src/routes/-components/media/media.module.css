@@ -1,0 +1,209 @@
+.figure {
+    /* inline-block shrink-wraps this to the actual rendered image width, so a portrait
+       image doesn't leave a wide, mostly-empty caption row under a narrow picture.
+       (max-width:max-content was the previous attempt at this — combined with
+       .imageTrigger's old width:100%, that's a shrink-to-fit parent containing a
+       percentage-width child, a circular sizing dependency that was collapsing the
+       figure's own box height and letting the next heading render on top of the caption.) */
+    display: inline-block;
+    max-width: 100%;
+    margin: 0;
+}
+
+.imageTrigger {
+    display: block;
+    position: relative;
+    margin: 0;
+    padding: 0;
+    border: 1px solid var(--sheet-edge);
+    background: none;
+    cursor: zoom-in;
+    line-height: 0;
+
+    &:focus-visible {
+        outline: 2px solid var(--rust);
+        outline-offset: 2px;
+    }
+
+    &:hover .expandHint,
+    &:focus-visible .expandHint {
+        opacity: 1;
+    }
+}
+
+.imageTriggerBorderless {
+    border: none;
+}
+
+.thumbnail {
+    display: block;
+    height: auto;
+}
+
+.expandHint {
+    position: absolute;
+    right: var(--space-10);
+    bottom: var(--space-10);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 2rem;
+    height: 2rem;
+    border-radius: 50%;
+    background: rgba(38, 38, 32, 0.72);
+    color: var(--sheet);
+    font-size: var(--text-14);
+    opacity: 0;
+    transition: opacity 0.15s ease-out;
+}
+
+.caption {
+    margin-top: var(--space-8);
+    font: 400 var(--text-13)/1.5 var(--font-mono);
+    color: var(--muted);
+    text-align: center;
+}
+
+.overlay {
+    position: fixed;
+    inset: 0;
+    background: rgba(38, 38, 32, 0.92);
+    animation: overlayHide 0.15s ease-in forwards;
+
+    &[data-state='open'] {
+        animation: overlayShow 0.15s ease-out forwards;
+    }
+}
+
+/* True full-screen — inset:0 + 100dvh (not 100vh, which on mobile is measured
+   with the browser chrome hidden and leaves the dialog looking undersized once
+   the address bar reappears). No card, no border-radius: this fills the viewport. */
+.dialog {
+    position: fixed;
+    inset: 0;
+    width: 100vw;
+    height: 100dvh;
+    background: transparent;
+    border: 0;
+    overflow: hidden;
+    animation: contentHide 0.15s ease-in forwards;
+
+    &[data-state='open'] {
+        animation: contentShow 0.18s ease-out forwards;
+    }
+
+    &:focus-visible {
+        outline: none;
+    }
+}
+
+.content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    height: 100%;
+    padding: max(var(--space-20), env(safe-area-inset-top)) max(var(--space-20), env(safe-area-inset-right)) max(var(--space-20), env(safe-area-inset-bottom)) max(var(--space-20), env(safe-area-inset-left));
+    overflow: auto;
+}
+
+/* Fixed-height header the button lives in — reserved space the media area's
+   max-height is computed against, so a tall image can never grow underneath it. */
+.closeRow {
+    flex: none;
+    display: flex;
+    justify-content: flex-end;
+    width: 100%;
+    padding-bottom: var(--space-10);
+}
+
+.mediaArea {
+    display: flex;
+    flex: 1;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    min-height: 0;
+    width: 100%;
+}
+
+.fullMedia {
+    display: flex;
+    flex: 1;
+    min-height: 0;
+    max-width: 100%;
+    align-items: center;
+    justify-content: center;
+
+    > * {
+        max-width: 100%;
+        max-height: 100%;
+        object-fit: contain;
+    }
+}
+
+.description {
+    flex: none;
+    margin: var(--space-10) 0 0;
+    max-width: 60ch;
+    /* Same face as the inline .caption below the thumbnail — only the color changes for the dark backdrop. */
+    font: 400 var(--text-14)/1.6 var(--font-mono);
+    color: var(--sheet);
+    text-align: center;
+}
+
+.closeButton {
+    flex: none;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 2.5rem;
+    height: 2.5rem;
+    border-radius: 50%;
+    border: 0;
+    background: rgba(38, 38, 32, 0.72);
+    color: var(--sheet);
+    font-size: var(--text-18);
+    cursor: pointer;
+
+    &:hover {
+        background: var(--olive);
+    }
+
+    &:focus-visible {
+        outline: 2px solid var(--rust);
+        outline-offset: 2px;
+    }
+}
+
+@keyframes overlayShow {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+@keyframes overlayHide {
+    from { opacity: 1; }
+    to { opacity: 0; }
+}
+
+@keyframes contentShow {
+    from {
+        opacity: 0;
+        transform: scale(0.98);
+    }
+    to {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+@keyframes contentHide {
+    from {
+        opacity: 1;
+        transform: scale(1);
+    }
+    to {
+        opacity: 0;
+        transform: scale(0.98);
+    }
+}

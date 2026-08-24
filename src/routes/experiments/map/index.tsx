@@ -3,7 +3,7 @@ import { useRef, useEffect, useState } from 'react';
 import { createPortal } from 'react-dom';
 import { useCreateMap, type PopupChangeParams } from './-components/createMap';
 import type { Map, Popup } from 'mapbox-gl/esm';
-import { type Feature, type Polygon, type GeoJsonProperties } from 'geojson';
+import type { Feature, Polygon, GeoJsonProperties } from 'geojson';
 
 import { Popup as TRIPopup } from './-components/popUp';
 import type { Facility } from './-enums';
