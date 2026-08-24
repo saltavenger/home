@@ -1,0 +1,8 @@
+.container {
+    margin: var(--space-15) 0;
+}
+
+.appImg {
+    min-width: 12.5rem;
+    max-width: 37.5rem;
+}

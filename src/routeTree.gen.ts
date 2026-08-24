@@ -12,6 +12,7 @@ import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
 import { Route as ExperimentsRouteRouteImport } from './routes/experiments/route'
 import { Route as ExperimentsIndexRouteImport } from './routes/experiments/index'
+import { Route as ExperimentsCatFeederIndexRouteImport } from './routes/experiments/catFeeder/index'
 import { Route as ExperimentsMapIndexRouteImport } from './routes/experiments/map/index'
 import { Route as ExperimentsRedesignIndexRouteImport } from './routes/experiments/redesign/index'
 
@@ -30,6 +31,12 @@ const ExperimentsIndexRoute = ExperimentsIndexRouteImport.update({
   path: '/',
   getParentRoute: () => ExperimentsRouteRoute,
 } as any)
+const ExperimentsCatFeederIndexRoute =
+  ExperimentsCatFeederIndexRouteImport.update({
+    id: '/catFeeder/',
+    path: '/catFeeder/',
+    getParentRoute: () => ExperimentsRouteRoute,
+  } as any)
 const ExperimentsMapIndexRoute = ExperimentsMapIndexRouteImport.update({
   id: '/map/',
   path: '/map/',
@@ -46,12 +53,14 @@ export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/experiments': typeof ExperimentsRouteRouteWithChildren
   '/experiments/': typeof ExperimentsIndexRoute
+  '/experiments/catFeeder/': typeof ExperimentsCatFeederIndexRoute
   '/experiments/map/': typeof ExperimentsMapIndexRoute
   '/experiments/redesign/': typeof ExperimentsRedesignIndexRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/experiments': typeof ExperimentsIndexRoute
+  '/experiments/catFeeder': typeof ExperimentsCatFeederIndexRoute
   '/experiments/map': typeof ExperimentsMapIndexRoute
   '/experiments/redesign': typeof ExperimentsRedesignIndexRoute
 }
@@ -60,6 +69,7 @@ export interface FileRoutesById {
   '/': typeof IndexRoute
   '/experiments': typeof ExperimentsRouteRouteWithChildren
   '/experiments/': typeof ExperimentsIndexRoute
+  '/experiments/catFeeder/': typeof ExperimentsCatFeederIndexRoute
   '/experiments/map/': typeof ExperimentsMapIndexRoute
   '/experiments/redesign/': typeof ExperimentsRedesignIndexRoute
 }
@@ -69,15 +79,22 @@ export interface FileRouteTypes {
     | '/'
     | '/experiments'
     | '/experiments/'
+    | '/experiments/catFeeder/'
     | '/experiments/map/'
     | '/experiments/redesign/'
   fileRoutesByTo: FileRoutesByTo
-  to: '/' | '/experiments' | '/experiments/map' | '/experiments/redesign'
+  to:
+    | '/'
+    | '/experiments'
+    | '/experiments/catFeeder'
+    | '/experiments/map'
+    | '/experiments/redesign'
   id:
     | '__root__'
     | '/'
     | '/experiments'
     | '/experiments/'
+    | '/experiments/catFeeder/'
     | '/experiments/map/'
     | '/experiments/redesign/'
   fileRoutesById: FileRoutesById
@@ -110,6 +127,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof ExperimentsIndexRouteImport
       parentRoute: typeof ExperimentsRouteRoute
     }
+    '/experiments/catFeeder/': {
+      id: '/experiments/catFeeder/'
+      path: '/catFeeder'
+      fullPath: '/experiments/catFeeder/'
+      preLoaderRoute: typeof ExperimentsCatFeederIndexRouteImport
+      parentRoute: typeof ExperimentsRouteRoute
+    }
     '/experiments/map/': {
       id: '/experiments/map/'
       path: '/map'
@@ -129,12 +153,14 @@ declare module '@tanstack/react-router' {
 
 interface ExperimentsRouteRouteChildren {
   ExperimentsIndexRoute: typeof ExperimentsIndexRoute
+  ExperimentsCatFeederIndexRoute: typeof ExperimentsCatFeederIndexRoute
   ExperimentsMapIndexRoute: typeof ExperimentsMapIndexRoute
   ExperimentsRedesignIndexRoute: typeof ExperimentsRedesignIndexRoute
 }
 
 const ExperimentsRouteRouteChildren: ExperimentsRouteRouteChildren = {
   ExperimentsIndexRoute: ExperimentsIndexRoute,
+  ExperimentsCatFeederIndexRoute: ExperimentsCatFeederIndexRoute,
   ExperimentsMapIndexRoute: ExperimentsMapIndexRoute,
   ExperimentsRedesignIndexRoute: ExperimentsRedesignIndexRoute,
 }

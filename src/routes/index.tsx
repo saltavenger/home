@@ -48,11 +48,7 @@ function App() {
             </Card>
             <Card compact>
               <div>
-                <a
-                  href="https://x.com/search?q=(feedandgo%2C%20OR%20rasberrypi)%20(from%3Asaltavenger)&src=typed_query&f=top"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                >Raspberry Pi Cat Feeder &amp; Companion App</a>
+                <div><Link to="/experiments/catFeeder">Raspberry Pi Cat Feeder & Companion App</Link></div>
                 <span className={styles.meta}>2019</span>
               </div>
             </Card>
@@ -65,11 +61,11 @@ function App() {
             <Card compact>
               <div>
                 <Media
-                  caption="ECTV Horror Marathon intro"
+                  caption="ECTV Horror Marathon Intro"
                   noBorder
                   trigger={
                     <LinkButton type="button">
-                      ECTV Horror Marathon intro
+                      ECTV Horror Marathon Intro
                     </LinkButton>
                   }
                 >
@@ -140,11 +136,11 @@ function App() {
             <Card compact>
               <div>
                 <Media
-                  caption="Casual monster"
+                  caption="Casual Monster"
                   noBorder
                   trigger={
                     <LinkButton type="button">
-                      Casual monster
+                      Casual Monster
                     </LinkButton>
                   }
                 >
