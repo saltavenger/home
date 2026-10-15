@@ -41,7 +41,10 @@ function App() {
           <h2>Experiments</h2>
           <CardList>
             <Card compact>
-              <div><Link to="/experiments/redesign">Portfolio Redesign & AI</Link><span className={styles.meta}>2026</span></div>
+              <div><Link to="/experiments/trans">Transbucket User Experience</Link><span className={styles.meta}>2026</span></div>
+            </Card>
+            <Card compact>
+              <div><Link to="/experiments/redesign">Claude Design & Portfolio</Link><span className={styles.meta}>2026</span></div>
             </Card>
             <Card compact>
               <div><Link to="/experiments/map">Tri.net Map</Link><span className={styles.meta}>2026</span></div>

@@ -1,0 +1,77 @@
+.container {
+    margin: var(--space-40) auto;
+    max-width: 80rem;
+}
+
+.imgContainer {
+    /* --media-max-h is only *defined* here — it's the single source of truth that .img
+       below reads. It is deliberately NOT applied as this element's own max-height:
+       this container holds the image *and* its caption underneath, so it's always
+       taller than the image alone. Capping the container itself at the image's height
+       just clips 20-30px of the container's own box off (with default overflow:visible
+       the caption still visibly renders past that point, uncapped) — everything downstream
+       (grid rows, following siblings) then lays out as if the container ended there,
+       silently overlapping the caption. Only the image needs the cap; the container
+       should stay auto-height and simply grow to whatever its content needs. */
+    --media-max-h: 600px;
+    text-align: center;
+    min-width: 200px;
+    max-width: 600px;
+    position: relative;
+}
+
+.imgContainerSmall {
+    max-width: 250px;
+    --media-max-h: 375px;
+}
+
+.img {
+    max-width: 100%;
+    object-fit: contain;
+}
+
+/* The height cap applies only to the inline thumbnail, never inside the Media dialog.
+   <Media> renders `children` twice — once inline, once again in a React Portal for the
+   full-screen view — and a portal's content is *not* a DOM descendant of where it's
+   written in JSX. So as long as .imgContainer only ever wraps the trigger (not the other
+   way around), this descendant selector naturally can't reach the portaled copy; inside
+   the dialog, media.module.css's own `.fullMedia > * { max-height: 100% }` takes over. */
+.imgContainer .img {
+    max-height: var(--media-max-h);
+}
+
+.twoColumn {
+    display: grid;
+    grid-template-columns: 1fr; 
+    gap: var(--space-10);
+
+
+    @media screen and (min-width: 60rem) {
+        grid-template-columns: 1fr 1fr;
+        justify-items: center;
+    }
+}
+
+.mediaStrip {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: var(--space-10);
+    justify-items: center;
+
+    @media screen and (min-width: 60rem) {
+        grid-template-columns: 1fr 1fr 1fr;
+    }
+}
+
+.info {
+    color: var(--rust-deep);
+    background-color: var(--rule);
+    border: 1px solid var(--rust);
+    padding: var(--space-10);
+    border-radius: 4px;
+    margin-bottom: 1rem;
+}
+
+.toc {
+    margin-top: var(--space-20);
+}
